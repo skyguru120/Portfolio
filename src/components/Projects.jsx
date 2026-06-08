@@ -1,154 +1,117 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import { projects } from "../constants";
-import { AiFillGithub } from "react-icons/ai";
-import { BsLink45Deg } from "react-icons/bs";
+import { BsLink45Deg, BsArrowUpRight } from "react-icons/bs";
+import { useLanguage } from "../context/LanguageContext";
+import { getLocalizedProjects } from "../i18n";
 
-const Project = (props) => {
+const cardVariants = {
+  hidden: { y: 32, opacity: 0, scale: 0.96 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { delay: i * 0.07, duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const WIDE_CARD_INDEXES = new Set([0, 5]);
+
+const Project = ({ index, labels, ...props }) => {
+  const isWide = WIDE_CARD_INDEXES.has(index);
+
   return (
-    <div className="project-card flex-shrink-0 px-8 py-6 transition-colors duration-300 transform border rounded-xl hover:border-transparent group dark:border-gray-700 dark:hover:border-transparent feature-card w-[320px] sm:w-[400px] md:w-[500px] mr-6 sm:mr-8 md:mr-10">
-      <div className="flex flex-col items-start">
-        <img
-          className="flex-shrink-0 object-cover w-20 h-20 rounded-full ring-4 ring-gray-300"
-          src={props.image}
-          alt=""
-        />
+    <motion.a
+      href={props.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      custom={index}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      whileHover={{ y: -8, scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 320, damping: 22 }}
+      className={`project-card group ${isWide ? "project-card--wide" : ""}`}
+      aria-label={labels.openProject(props.title)}
+    >
+      <span className="project-card__glow" aria-hidden="true" />
+      <span className="project-card__border" aria-hidden="true" />
+      <span className="project-card__orbit" aria-hidden="true" />
 
-        <div className="mt-4 w-full">
-          <h1 className="text-xl font-semibold font-poppins text-gray-700 capitalize md:text-2xl group-hover:text-white text-gradient">
-            {props.title}
-          </h1>
-          <p className="font-poppins font-normal text-dimWhite mt-3 mb-2">
-            Tech Stack
-          </p>
-          <div className="text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-            <div className="flex flex-wrap gap-4">
-              {props.stack.map((tech, index) => (
-                <div
-                  key={tech.id}
-                  index={index}
-                  className="text-dimWhite text-[20px] hover:text-teal-200 tooltip"
-                >
-                  {React.createElement(tech.icon)}
-                  <span className="tooltiptext">{tech.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="project-card__top">
+        <span className="experience-logo project-card__logo">
+          <img src={props.image} alt="" className="experience-logo__img" />
+        </span>
+        <span className="project-card__open" aria-hidden="true">
+          <BsArrowUpRight />
+        </span>
       </div>
 
-      <p className="mt-6 text-gray-500 dark:text-gray-300 group-hover:text-gray-300 font-poppins">
+      <h2 className="project-card__title font-poppins font-semibold text-white group-hover:text-teal-100 transition-colors">
+        {props.title}
+      </h2>
+
+      <p className="project-card__desc font-poppins text-dimWhite group-hover:text-white/90 transition-colors">
         {props.content}
       </p>
 
-      <div className="flex mt-4 -mx-2">
-        {/* {props.github ? (
-          <a href={props.github} target="_blank">
-            <AiFillGithub
-              size="2rem"
-              className="text-white mr-1 hover:text-teal-200"
-            />
-          </a>
-        ) : (
-          ""
-        )} */}
-        {props.link ? (
-          <a href={props.link} target="_blank">
-            <BsLink45Deg
-              size="2rem"
-              className="text-white hover:text-teal-200"
-            ></BsLink45Deg>
-          </a>
-        ) : (
-          ""
-        )}
+      <div className="project-card__footer">
+        <p className="project-card__label font-poppins text-dimWhite">{labels.techStack}</p>
+        <div className="project-card__stack">
+          {props.stack.map((tech) => (
+            <span key={tech.id} className="project-card__stack-pill">
+              <span className="project-card__stack-icon">
+                {React.createElement(tech.icon)}
+              </span>
+              {tech.name}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+
+      <span className="project-card__visit font-poppins">
+        {labels.visitSite}
+        <BsLink45Deg />
+      </span>
+    </motion.a>
   );
 };
 
 const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // State to track current carousel position
-  const [cardTotalWidth, setCardTotalWidth] = useState(0); // State to store total width of each card (width + margin) for scroll calculations
-  const containerRef = useRef(null);
-
-  // Calculate card width on mount and window resize for responsive carousel
-  useEffect(() => {
-    const updateCardWidth = () => {
-      if (containerRef.current) {
-        const card = containerRef.current.querySelector(".project-card");
-        if (card) {
-          const cardWidth = card.offsetWidth;
-          const cardMargin = parseInt(
-            window.getComputedStyle(card).marginRight,
-            10
-          );
-          setCardTotalWidth(cardWidth + cardMargin);
-        }
-      }
-    };
-    updateCardWidth();
-    window.addEventListener("resize", updateCardWidth);
-    return () => {
-      window.removeEventListener("resize", updateCardWidth);
-    };
-  }, []);
-
-  // Navigation handlers
-  const handleNext = () => {
-    if (currentIndex < projects.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-    }
+  const { t } = useLanguage();
+  const localizedProjects = getLocalizedProjects(projects, t);
+  const labels = {
+    techStack: t.common.techStack,
+    visitSite: t.common.visitSite,
+    openProject: t.common.openProject,
   };
-
-  // Navigate to previous project card
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-    }
-  };
-
-  const isNextDisabled = currentIndex >= projects.length - 1;
-  const isPrevDisabled = currentIndex === 0;
 
   return (
-    <section id="projects" className="overflow-hidden">
-      <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Projects
-      </h1>
+    <section id="projects" className="projects-section overflow-hidden relative">
+      <div className="projects-section__aurora projects-section__aurora--1" aria-hidden="true" />
+      <div className="projects-section__aurora projects-section__aurora--2" aria-hidden="true" />
 
-      <div className="container px-2 py-14 mx-auto mb-8">
-        <div className="overflow-hidden">
-          <div
-            ref={containerRef}
-            className="flex transition-transform duration-500 ease-in-out mb-8"
-            style={{
-              transform: `translateX(-${currentIndex * cardTotalWidth}px)`,
-            }}
-          >
-            {/* Render all project cards */}
-            {projects.map((project, index) => (
-              <Project key={project.id} index={index} {...project} />
-            ))}
-          </div>
-          <div className="flex justify-end mb-8">
-            {/* Navigation buttons */}
-            <button
-              onClick={handlePrev}
-              disabled={isPrevDisabled}
-              // p-2 bg-gray-700 rounded-full disabled:opacity-50 mx-2 hover:bg-gray-600 transition-colors
-              className="p-2 bg-gray-700 rounded-full disabled:opacity-50 mx-2 hover:bg-gray-600 transition-colors text-white"
-            >
-              &lt;
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={isNextDisabled}
-              className="p-2 bg-gray-700 rounded-full disabled:opacity-50 mx-2 hover:bg-gray-600 transition-colors text-white"
-            >
-              &gt;
-            </button>
-          </div>
+      <motion.div
+        className="relative z-[1]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h1 className="font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
+          {t.sections.projects.title}
+        </h1>
+        <p className="font-poppins text-dimWhite text-[17px] max-w-[640px] mt-2">
+          {t.sections.projects.subtitle}
+        </p>
+      </motion.div>
+
+      <div className="relative z-[1] container px-2 py-12 mx-auto mb-8">
+        <div className="projects-bento">
+          {localizedProjects.map((project, index) => (
+            <Project key={project.id} index={index} labels={labels} {...project} />
+          ))}
         </div>
       </div>
     </section>

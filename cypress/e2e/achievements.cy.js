@@ -7,7 +7,7 @@ describe('Achievements section', () => {
   });
 
   it('shows section heading', () => {
-    cy.get('#achievements').contains('h1', 'Achievements').should('be.visible');
+    cy.get('#achievements').contains('h1', 'Career Highlights').should('be.visible');
   });
 
   it('renders all achievement cards in the grid', () => {

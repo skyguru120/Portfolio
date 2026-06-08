@@ -3,6 +3,7 @@ import { DiGitMerge, DiGitPullRequest } from "react-icons/di";
 import { AiFillApi } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { fetchContributionsWithRetry } from "../lib/helperFunctions";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contribution = (props) => {
   return (
@@ -64,10 +65,12 @@ const Contribution = (props) => {
 };
 
 const OpenSource = () => {
+  const { t } = useLanguage();
   const [contributions, setContributions] = useState([]);
   const [filterContribution, setFilterContribution] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
   const [filters, setFilters] = useState(["All"]);
+  const filterAllLabel = t.sections.openSource.filterAll;
 
   useEffect(() => {
     const getContributions = async () => {
@@ -86,25 +89,30 @@ const OpenSource = () => {
   }, []);
 
   const handleContributionFilter = (item) => {
-    setActiveFilter(item);
+    const filterValue = item === filterAllLabel ? "All" : item;
+    setActiveFilter(filterValue);
 
     setTimeout(() => {
-      if (item === "All") {
+      if (filterValue === "All") {
         setFilterContribution(contributions);
       } else {
         setFilterContribution(
           contributions.filter(
-            (contribution) => contribution.repo.toLowerCase() == item.toLowerCase()
+            (contribution) => contribution.repo.toLowerCase() == filterValue.toLowerCase()
           )
         );
       }
     }, 500);
   };
 
+  const getFilterLabel = (item) => (item === "All" ? filterAllLabel : item);
+  const isFilterActive = (item) =>
+    activeFilter === item || (item === filterAllLabel && activeFilter === "All");
+
   return (
     <section id="openSource">
       <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Open Source Contributions
+        {t.sections.openSource.title}
       </h1>
 
       <div className="container px-2 py-5 mx-auto mb-8">
@@ -115,12 +123,12 @@ const OpenSource = () => {
                 (item, index) => (
                   <button
                     key={index}
-                    onClick={() => handleContributionFilter(item)}
+                    onClick={() => handleContributionFilter(getFilterLabel(item))}
                     className={`px-2 py-2 text-sm font-medium text-white md:py-3 rounded-xl md:px-6 capitalize transition-colors duration-300 focus:outline-none hover:bg-teal-400 font-poppins ${
-                      activeFilter === item ? "bg-teal-400" : ""
+                      isFilterActive(getFilterLabel(item)) ? "bg-teal-400" : ""
                     }`}
                   >
-                    {item}
+                    {getFilterLabel(item)}
                   </button>
                 )
               )}
@@ -136,10 +144,10 @@ const OpenSource = () => {
 
             <div className="mt-4 sm:mx-4 sm:mt-0">
               <h1 className="text-xl font-semibold font-poppins text-gray-700 md:text-2xl group-hover:text-white text-gradient">
-                Something went wrong loading this section.
+                {t.sections.openSource.errorTitle}
               </h1>
               <p className="font-poppins font-normal text-dimWhite mt-3">
-                Please wait a few seconds and try reloading the page.
+                {t.sections.openSource.errorBody}
               </p>
             </div>
           </div>

@@ -3,6 +3,8 @@ import { educationList } from "../constants";
 import Lottie from "react-lottie-player";
 import animationData from "../lotties/quiz-mode-teal-dark.json";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import { getLocalizedEducation } from "../i18n";
 
 // lottie config
 const defaultOptions = {
@@ -55,10 +57,13 @@ const FeatureCard = ({
 );
 
 const Education = () => {
+  const { t } = useLanguage();
+  const localizedEducation = getLocalizedEducation(educationList, t);
+
   return (
     <section id="education">
       <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Education
+        {t.sections.education}
       </h1>
       <motion.div
         className={layout.sectionReverse}
@@ -79,7 +84,7 @@ const Education = () => {
         </div>
 
         <div className={`${layout.sectionInfo} flex-col`}>
-          {educationList.map((feature, index) => (
+          {localizedEducation.map((feature, index) => (
             <FeatureCard key={feature.id} index={index} {...feature} />
           ))}
         </div>

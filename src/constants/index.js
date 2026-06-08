@@ -30,7 +30,20 @@ import {
   polkadot_dev_cli,
   hackathon_curation_agent,
   kudos,
-  web3_marketing_hackathon
+  web3_marketing_hackathon,
+  projectFin,
+  projectRossum,
+  projectLangsmith,
+  projectGlean,
+  projectPortainer,
+  projectMonday,
+  projectMieru,
+  projectBenstay,
+  projectSanka,
+  nextgenSystems,
+  monoya,
+  gunosy,
+  nssolutions,
 } from "../assets";
 
 import {
@@ -78,10 +91,26 @@ import {
   SiGooglesheets,
   SiThirdweb,
   SiVercel,
-  SiIntellijidea
+  SiIntellijidea,
+  SiPhp,
+  SiVuedotjs,
+  SiRedux,
+  SiExpress,
+  SiFastapi,
+  SiLaravel,
+  SiDocker,
+  SiAmazon,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiGithubactions,
+  SiNginx,
+  SiWordpress,
+  SiHuggingface,
+  SiZapier,
 } from "react-icons/si";
 
-import { FaHardHat, FaRust } from "react-icons/fa";
+import { FaHardHat, FaRust, FaRobot, FaLinux } from "react-icons/fa";
 
 import { IoIosNotificationsOutline } from "react-icons/io";
 
@@ -91,7 +120,8 @@ import { DiCss3, DiJava, DiMsqlServer, DiRuby } from "react-icons/di";
 import { VscAzure } from "react-icons/vsc";
 import { BiLogoVisualStudio } from "react-icons/bi";
 
-import { RiGeminiFill } from "react-icons/ri";
+import { RiGeminiFill, RiBrainLine } from "react-icons/ri";
+import { TbApi, TbScan } from "react-icons/tb";
 
 export const resumeLink =
   // "https://drive.google.com/file/d/1vkxyMDB5_KpMwt4QXFgT2aqdRizr8Czh/view?usp=sharing";
@@ -153,316 +183,133 @@ export const educationList = [
 ];
 
 // Add your past achievements here for example - rankings in hackathons/events
+// Career highlights from resume — aligned with full-stack & AI experience
 export const achievements = [
   {
     id: "a-1",
-    icon: ethindia,
-    event: "ETHIndia'24 | India's Largest Ethereum Hackathon",
-    position: "Winner",
-    content1: "Top 10 Overall Finalists/Winners, True Network's Winner",
-    content2: "Polkadot's 1st Runner Up, Lit Protocol's 2nd Runner Up",
-    content3: "Coinbase Pool Prize, Base Top 10",
-    // article:
-    //   "https://www.linkedin.com/posts/yoshiaki-kitade_super-stoked-to-announce-that-our-team-emerged-activity-7274735259621961729-tkq4?utm_source=share&utm_medium=member_desktop",
-    // project: "https://devfolio.co/projects/khoj-3336",
-    // youtube:
-    //   "https://www.youtube.com/live/qJ4OCtnvjUY?si=VkcnHEdwJTEEDlMg&t=4718",
+    icon: nextgenSystems,
+    event: "LLM Document Orchestration",
+    position: "NextGen Systems · Sr Full Stack Engineer",
+    content1:
+      "Built AI document parsing with instructor.js and Zod validation across GPT-4, Claude, Gemini, and Grok.",
+    content2:
+      "Led cost-benefit analysis for LLM providers and vector stores to guide architecture decisions.",
+    tags: ["Python", "OpenAI", "LLM", "RAG"],
   },
   {
     id: "a-2",
-    icon: ethglobal,
-    event: "ETHIndia'22 | World's Largest Ethereum Hackathon",
-    position: "Winner",
-    content1: "Top 12 Winners among 20k+ registrations",
-    content2: "One of Polygon's Best Public Goods",
-    content3: "Best Module on Biconomy SDK",
-    // article:
-    //   "https://www.thehindu.com/news/cities/Mangalore/nitk-iiit-delhi-team-makes-it-to-top-12-winners-in-ethindia-22/article66238923.ece",
-    // project: "https://devfolio.co/projects/chargeswap-3527",
-    // youtube: "https://youtu.be/9rieTya8Yds?t=3908",
+    icon: nextgenSystems,
+    event: "Onboarding Flow Rebuild",
+    position: "14% Completion Increase",
+    content1:
+      "Rebuilt a brittle signup flow across Next.js, Python APIs, and event tracking.",
+    content2:
+      "Resolved validation edge cases, duplicate accounts, and post-launch funnel blind spots.",
+    tags: ["Next.js", "React", "Node.js", "TypeScript"],
   },
   {
     id: "a-3",
-    icon: polkadot,
-    event: "Polkadot Hackathon: Europe Edition",
-    position: "2nd Runner Up in the ink! Smart Contract Category",
+    icon: nextgenSystems,
+    event: "AI Bid Matching Platform",
+    position: "Full-Stack Delivery",
     content1:
-      "Built GreenTrust offering a novel solution for obtaining certification in organic farming.",
-    content2: "",
-    content3: "",
-    // article:
-    //   "https://www.linkedin.com/posts/yoshiaki-kitade_hackathon-winners-web3-activity-7048340759116214272-eJvo?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOa76QB7zljgX8NK4xVSZXi0Z49ETMeC-g",
-    // github: "https://github.com/pranav2305/GreenTrust",
+      "Architected an AI-powered bid matching platform with Node.js, MongoDB, and React.",
+    content2:
+      "Deployed to DigitalOcean with a complete CI/CD pipeline implementation.",
+    tags: ["MongoDB", "React", "Docker", "CI/CD"],
   },
   {
     id: "a-4",
-    icon: lightspeed,
-    event: "Warpspeed by Lightspeed 2023",
-    position: "1st Runner Up",
-    content1: "1st Runner Up Overall by Lightspeed among 107 hackers",
-    content2: "Top 3 projects using Replit",
-    content3: "1st Runner Up by Amazon Web Services (AWS)",
-    // article: "https://shorturl.at/fhjsT",
+    icon: monoya,
+    event: "AI Business Automation",
+    position: "monoya · Python Developer",
+    content1:
+      "Led AI automation platforms using React, FastAPI, and OpenAI APIs.",
+    content2:
+      "Applied pandas and Watson NLU to analyze customer satisfaction signals.",
+    tags: ["FastAPI", "Python", "NLP", "AWS"],
   },
   {
     id: "a-5",
-    icon: lightspeed,
-    event: "Warpspeed: Agentic AI Hackathon | Lightspeed India",
-    position: "Runners Up in the Base Track",
-    content1: "Built an ambient virtual assistant before ChatGPT Pulse",
-    content2: "Runners up in the Base Track with the Agentic AI theme for 2025",
-    // project: "https://devfolio.co/projects/aeva-58d2",
+    icon: gunosy,
+    event: "OCR & Workflow Automation",
+    position: "Gunosy, Inc. · Software Developer",
+    content1:
+      "Automated manual operations with OCR processing and intelligent data extraction.",
+    content2:
+      "Built distributed workers with Celery, RabbitMQ, MySQL, and Django.",
+    tags: ["Django", "Python", "OCR", "REST API"],
   },
   {
     id: "a-6",
-    icon: kudos,
-    event: "Kudos Carnival | Polkadot Blockchain Academy",
-    position: "Runner Up",
-    content1: "Finished 2nd globally among PBA Alumni in a 6-week event",
-    content2: "Contributed to several repositories in the Polkadot ecosystem in a Hacktoberfest-style event",
-    // article: "https://www.morekudos.com/carnival",
-  },
-  {
-    id: "a-7",
-    icon: web3_marketing_hackathon,
-    event: "Web3 Marketing Hackathon",
-    position: "Runner Up",
+    icon: nssolutions,
+    event: "Enterprise Web Delivery",
+    position: "NS Solutions Corp · Web Developer",
     content1:
-      "2nd position in the Polkadot Challenge I - Creative Marketing Strategies to Boost Polkadot Awareness & Adoption",
-    content2: "",
-    content3: "",
-    // article: "https://x.com/polkadotsub0/status/1998425721916551355?s=46",
-    // project: "https://taikai.network/OutofOrdinary/hackathons/web3mkthack/projects/cmi0skdbk0257vu09q3n8m44u/idea",
-  },
-  {
-    id: "a-8",
-    icon: globalAi,
-    event: "Global AI HackFest 2023",
-    position: "Winner",
-    content1:
-      "1st Position in the Education, Finance & Tech track by AI Planet",
-    content2: "",
-    content3: "",
-    // article:
-    //   "https://www.linkedin.com/posts/yoshiaki-kitade_happy-to-share-that-comicifyai-emerged-as-activity-7078790186435833856-88fh",
-  },
-  {
-    id: "a-9",
-    icon: dennisivy,
-    event: "September Hackathon by Dennis Ivy",
-    position: "Winner",
-    content1:
-      "Rated the best portfolio website among 450+ participants across the globe.",
-    content2: "",
-    content3: "",
-    // youtube: "https://www.youtube.com/watch?v=X2473En3h_o&t=5278s",
-    // project: "https://yoshiakikitade.netlify.app/",
-  },
-  {
-    id: "a-10",
-    icon: manipal,
-    event: "Manipal Hackathon'22",
-    position: "Consolation Prize",
-    content1: "Top 10 among 500+ teams across India",
+      "Integrated Joomla, WordPress, and Drupal CMS platforms for client websites.",
     content2:
-      "Developed a cross-platform mobile application to address the problem of social cohesion.",
-    content3: "",
-    // article: "https://shorturl.at/exEIQ",
-  },
-  {
-    id: "a-11",
-    icon: icon,
-    event: "ICON Hyperbuild Hackathon",
-    position: "Honorable Mention",
-    content1:
-      "Honorable Mention among 655 participants across the globe in a 3 month-long online hackathon.",
-    content2: "",
-    content3: "",
-    // project: "https://devpost.com/software/green-trust-xj2w6g",
-  },
-  {
-    id: "a-12",
-    icon: ethforall,
-    event: "ETHForAll 2023",
-    position: "Top 3 Superfluid Projects",
-    content1:
-      "Bounty winners among 430 projects in ETHGlobal's largest online hackathon.",
-    content2: "",
-    content3: "",
-    // project: "https://devfolio.co/projects/green-trust-ed14",
+      "Delivered responsive, accessibility-focused UIs under tight contract timelines.",
+    tags: ["JavaScript", "HTML/CSS", "WordPress", "UX"],
   },
 ];
 
-// Add your software developments skills here for example - programming languages, frameworks etc.
+// Skills from resume — Yoshiaki Kitade
 export const skills = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     items: [
-      {
-        id: "pl-1",
-        icon: SiPython,
-        name: "Python",
-      },
-      {
-        id: "pl-2",
-        icon: DiJava,
-        name: "Java",
-      },
-      {
-        id: "pl-3",
-        icon: SiSolidity,
-        name: "Solidity",
-      },
-      {
-        id: "pl-4",
-        icon: DiRuby,
-        name: "Ruby",
-      },
-      {
-        id: "pl-5",
-        icon: SiJavascript,
-        name: "JavaScript",
-      },
-      {
-        id: "pl-6",
-        icon: SiTypescript,
-        name: "TypeScript",
-      },
-      {
-        id: "pl-7",
-        icon: SiCplusplus,
-        name: "C++",
-      },
-      {
-        id: "pl-8",
-        icon: FaGolang,
-        name: "Go",
-      },
-      {
-        id: "pl-9",
-        icon: FaRust,
-        name: "Rust",
-      },
-      {
-        id: "pl-10",
-        icon: SiC,
-        name: "C",
-      },
-      {
-        id: "pl-11",
-        icon: AiFillHtml5,
-        name: "HTML",
-      },
-      {
-        id: "pl-12",
-        icon: DiCss3,
-        name: "CSS",
-      },
+      { id: "pl-1", icon: SiPython, name: "Python" },
+      { id: "pl-2", icon: SiJavascript, name: "JavaScript" },
+      { id: "pl-3", icon: SiTypescript, name: "TypeScript" },
+      { id: "pl-4", icon: SiPhp, name: "PHP" },
+      { id: "pl-5", icon: DiMsqlServer, name: "SQL" },
+      { id: "pl-6", icon: AiFillHtml5, name: "HTML" },
+      { id: "pl-7", icon: DiCss3, name: "CSS" },
     ],
   },
   {
-    title: "Frameworks/Libraries",
+    title: "Frameworks & Libraries",
     items: [
-      {
-        id: "f-1",
-        icon: SiReact,
-        name: "ReactJS",
-      },
-      {
-        id: "f-2",
-        icon: SiDjango,
-        name: "Django",
-      },
-      {
-        id: "f-3",
-        icon: SiRubyonrails,
-        name: "Ruby on Rails",
-      },
-      {
-        id: "f-4",
-        icon: SiBootstrap,
-        name: "Bootstrap",
-      },
-      {
-        id: "f-5",
-        icon: SiTailwindcss,
-        name: "Tailwind CSS",
-      },
-      {
-        id: "f-6",
-        icon: SiJquery,
-        name: "jQuery",
-      },
-      {
-        id: "f-7",
-        icon: SiGraphql,
-        name: "GraphQL",
-      },
-      {
-        id: "f-8",
-        icon: SiDotnet,
-        name: ".NET",
-      },
+      { id: "f-1", icon: SiReact, name: "React" },
+      { id: "f-2", icon: SiNextdotjs, name: "Next.js" },
+      { id: "f-3", icon: SiVuedotjs, name: "Vue.js" },
+      { id: "f-4", icon: SiTailwindcss, name: "Tailwind CSS" },
+      { id: "f-5", icon: SiRedux, name: "Redux" },
+      { id: "f-6", icon: SiNodedotjs, name: "Node.js" },
+      { id: "f-7", icon: SiExpress, name: "Express.js" },
+      { id: "f-8", icon: SiFastapi, name: "FastAPI" },
+      { id: "f-9", icon: SiLaravel, name: "Laravel" },
+      { id: "f-10", icon: SiWordpress, name: "WordPress" },
+      { id: "f-11", icon: TbApi, name: "REST APIs" },
+      { id: "f-12", icon: SiGraphql, name: "GraphQL" },
     ],
   },
   {
-    title: "Tools",
+    title: "AI & Automation",
     items: [
-      {
-        id: "t-1",
-        icon: SiOracle,
-        name: "Oracle Cloud",
-      },
-      {
-        id: "t-2",
-        icon: VscAzure,
-        name: "Azure",
-      },
-      {
-        id: "t-3",
-        icon: SiMysql,
-        name: "MySQL",
-      },
-      {
-        id: "t-4",
-        icon: SiPostman,
-        name: "Postman",
-      },
-      {
-        id: "t-5",
-        icon: BiLogoVisualStudio,
-        name: "VS Code",
-      },
-      {
-        id: "t-6",
-        icon: SiIntellijidea,
-        name: "IntelliJ IDEA",
-      },
-      {
-        id: "t-7",
-        icon: SiGit,
-        name: "Git",
-      },
-      {
-        id: "t-8",
-        icon: AiFillGithub,
-        name: "GitHub",
-      },
-      {
-        id: "t-9",
-        icon: AiOutlineGitlab,
-        name: "Gitlab",
-      },
-      {
-        id: "t-10",
-        icon: SiNetlify,
-        name: "Netlify",
-      },
-      {
-        id: "t-11",
-        icon: SiVite,
-        name: "ViteJS",
-      },
+      { id: "ai-1", icon: SiOpenai, name: "OpenAI API" },
+      { id: "ai-2", icon: RiBrainLine, name: "LLM Integration" },
+      { id: "ai-3", icon: RiGeminiFill, name: "Prompt Engineering" },
+      { id: "ai-4", icon: SiZapier, name: "AI Automation" },
+      { id: "ai-5", icon: SiHuggingface, name: "NLP" },
+      { id: "ai-6", icon: TbScan, name: "OCR Processing" },
+      { id: "ai-7", icon: FaRobot, name: "AI Chatbots" },
+      { id: "ai-8", icon: SiOpenai, name: "RAG Systems" },
+    ],
+  },
+  {
+    title: "Cloud, DevOps & Databases",
+    items: [
+      { id: "t-1", icon: SiAmazon, name: "AWS" },
+      { id: "t-2", icon: SiDocker, name: "Docker" },
+      { id: "t-3", icon: SiGithubactions, name: "GitHub Actions" },
+      { id: "t-4", icon: FaLinux, name: "Linux" },
+      { id: "t-5", icon: SiNginx, name: "Nginx" },
+      { id: "t-6", icon: SiPostgresql, name: "PostgreSQL" },
+      { id: "t-7", icon: SiMysql, name: "MySQL" },
+      { id: "t-8", icon: SiMongodb, name: "MongoDB" },
+      { id: "t-9", icon: SiRedis, name: "Redis" },
+      { id: "t-10", icon: SiGit, name: "Git" },
     ],
   },
 ];
@@ -470,8 +317,8 @@ export const skills = [
 // Add your current/past professional work experience here
 export const experiences = [
   {
-    organisation: " NextGen Systems",
-    logo: oracle,
+    organisation: "NextGen Systems",
+    logo: nextgenSystems,
     // link: "https://www.oracle.com/in/",
     positions: [
       // {
@@ -521,7 +368,7 @@ export const experiences = [
   },
   {
     organisation: "monoya",
-    logo: averlon,
+    logo: monoya,
     // link: "https://averlon.ai/",
     positions: [
       {
@@ -542,7 +389,7 @@ export const experiences = [
   },
   {
     organisation: "Gunosy, Inc.",
-    logo: iris,
+    logo: gunosy,
     // link: "https://iris.nitk.ac.in/about_us",
     positions: [
       {
@@ -597,7 +444,7 @@ export const experiences = [
   },
   {
     organisation: "NS Solutions Corp",
-    logo: iris,
+    logo: nssolutions,
     // link: "https://iris.nitk.ac.in/about_us",
     positions: [
       {
@@ -650,403 +497,130 @@ export const experiences = [
 
 // Add information about all the projects to be listed out in your portfolio
 export const projects = [
-  // {
-  //   id: "project-1",
-  //   title: "Khoj",
-  //   github: "https://github.com/yoshiaki-kitade/Khoj",
-  //   link: "https://playkhoj.com/",
-  //   image: khoj,
-  //   content:
-  //     "Participate in AI-personalised treasure hunts where each clue is a physical location. Earn on-chain rewards and onboard a million users. Overall winning project at ETHIndia'24.",
-  //   stack: [
-  //     {
-  //       id: "proj1-icon-1",
-  //       icon: SiSolidity,
-  //       name: "Solidity",
-  //     },
-  //     {
-  //       id: "proj1-icon-2",
-  //       icon: SiTypescript,
-  //       name: "Typescript",
-  //     },
-  //     {
-  //       id: "proj1-icon-3",
-  //       icon: SiReact,
-  //       name: "React.js",
-  //     },
-  //     {
-  //       id: "proj1-icon-4",
-  //       icon: SiTailwindcss,
-  //       name: "TailwindCSS",
-  //     },
-  //     {
-  //       id: "proj1-icon-5",
-  //       icon: RiGeminiFill,
-  //       name: "Gemini",
-  //     },
-  //     {
-  //       id: "proj1-icon-6",
-  //       icon: SiThirdweb,
-  //       name: "Thirdweb",
-  //     },
-  //     {
-  //       id: "proj1-icon-7",
-  //       icon: SiIpfs,
-  //       name: "IPFS",
-  //     },
-  //   ],
-  // },
+  {
+    id: "project-1",
+    title: "Fin",
+    link: "https://fin.ai/",
+    image: projectFin,
+    content:
+      "AI-first customer service agent that resolves complex support queries with natural conversation and deep product context.",
+    stack: [
+      { id: "p1-1", icon: SiOpenai, name: "LLM" },
+      { id: "p1-2", icon: FaRobot, name: "AI Agents" },
+      { id: "p1-3", icon: SiReact, name: "React" },
+      { id: "p1-4", icon: SiNodedotjs, name: "Node.js" },
+    ],
+  },
   {
     id: "project-2",
-    title: "Echo",
-    github: "https://github.com/imApoorva36/Echo",
-    link: "https://testflight.apple.com/join/TpYrhKRy",
-    image: echo,
+    title: "Rossum",
+    link: "https://rossum.ai/",
+    image: projectRossum,
     content:
-      "A proactive AI assistant that's always listening and executes without you having to ask. Available on iOS TestFlight.",
+      "Intelligent document processing platform that automates invoice and data capture workflows with AI-powered extraction.",
     stack: [
-      {
-        id: "projEcho-icon-1",
-        icon: SiTypescript,
-        name: "TypeScript",
-      },
-      {
-        id: "projEcho-icon-2",
-        icon: SiReact,
-        name: "React Native",
-      },
-      {
-        id: "projEcho-icon-3",
-        icon: SiNodedotjs,
-        name: "Node.js",
-      },
-      {
-        id: "projEcho-icon-4",
-        icon: SiSupabase,
-        name: "Supabase",
-      },
-      {
-        id: "projEcho-icon-5",
-        icon: SiVercel,
-        name: "Vercel AI SDK",
-      },
+      { id: "p2-1", icon: TbScan, name: "OCR" },
+      { id: "p2-2", icon: SiPython, name: "Python" },
+      { id: "p2-3", icon: RiBrainLine, name: "ML" },
+      { id: "p2-4", icon: TbApi, name: "REST API" },
     ],
   },
   {
     id: "project-3",
-    title: "Hackathon Curation AI Agent",
-    github: "https://github.com/yoshiaki-kitade/hackathon-curation-agent",
-    image: hackathon_curation_agent,
+    title: "LangSmith",
+    link: "https://www.langchain.com/langsmith/observability",
+    image: projectLangsmith,
     content:
-      "An intelligent agent that automatically curates hackathons from your email newsletters, evaluates them using AI, and posts the best ones to Twitter.",
+      "LLM observability platform for tracing, evaluating, and monitoring production AI applications at scale.",
     stack: [
-      {
-        id: "proj2-icon-1",
-        icon: SiPython,
-        name: "Python",
-      },
-      {
-        id: "proj2-icon-2",
-        icon: RiGeminiFill,
-        name: "Gemini",
-      },
-      {
-        id: "proj2-icon-3",
-        icon: SiGmail,
-        name: "Gmail API",
-      },
-      {
-        id: "proj2-icon-4",
-        icon: SiGooglesheets,
-        name: "Google Sheets API",
-      },
-      {
-        id: "proj2-icon-5",
-        icon: FaXTwitter,
-        name: "Twitter API",
-      },
-      {
-        id: "proj2-icon-6",
-        icon: SiGooglecloud,
-        name: "Google Cloud Platform",
-      },
+      { id: "p3-1", icon: RiBrainLine, name: "LLM Ops" },
+      { id: "p3-2", icon: SiPython, name: "Python" },
+      { id: "p3-3", icon: SiOpenai, name: "OpenAI" },
+      { id: "p3-4", icon: SiTypescript, name: "TypeScript" },
     ],
   },
   {
     id: "project-4",
-    title: "Comicify.ai",
-    github: "https://github.com/ayush4345/Comicify.ai",
-    link: "https://devfolio.co/projects/comicifyai-97a6",
-    image: comicify_ai,
+    title: "Glean",
+    link: "https://www.glean.com/",
+    image: projectGlean,
     content:
-      "Convert any academic/news/boring text into cool comic strips using GPT-3.5 and Stable Diffusion!",
+      "Enterprise AI search and knowledge assistant that connects workplace apps to deliver contextual answers.",
     stack: [
-      {
-        id: "proj3-icon-1",
-        icon: SiReact,
-        name: "React",
-      },
-      {
-        id: "proj3-icon-2",
-        icon: SiTailwindcss,
-        name: "TailwindCSS",
-      },
-      {
-        id: "proj3-icon-3",
-        icon: SiOpenai,
-        name: "OpenAI",
-      },
-      {
-        id: "proj3-icon-4",
-        icon: SiGooglecloud,
-        name: "Google Cloud Platform",
-      },
-      {
-        id: "proj3-icon-5",
-        icon: SiFlask,
-        name: "Flask",
-      },
+      { id: "p4-1", icon: SiOpenai, name: "GenAI" },
+      { id: "p4-2", icon: RiBrainLine, name: "RAG" },
+      { id: "p4-3", icon: SiPython, name: "Python" },
+      { id: "p4-4", icon: SiAmazon, name: "Cloud" },
     ],
   },
   {
     id: "project-5",
-    title: "Polkadot Dev CLI",
-    github: "https://github.com/yoshiaki-kitade/polkadot-dev-cli",
-    link: "https://crates.io/crates/polkadot-dev-cli",
-    image: polkadot_dev_cli,
+    title: "Portainer",
+    link: "https://www.portainer.io/",
+    image: projectPortainer,
     content:
-      "CLI tool for Polkadot developers bundling linting, formatting, and version management. cargo install polkadot-dev-cli.",
+      "Container management platform for deploying and operating Docker and Kubernetes environments with a visual UI.",
     stack: [
-      {
-        id: "proj4-icon-1",
-        icon: FaRust,
-        name: "Rust",
-      },
+      { id: "p5-1", icon: SiDocker, name: "Docker" },
+      { id: "p5-2", icon: FaLinux, name: "Linux" },
+      { id: "p5-3", icon: SiGithubactions, name: "CI/CD" },
+      { id: "p5-4", icon: SiNginx, name: "Nginx" },
     ],
   },
   {
     id: "project-6",
-    title: "Non-Teaching Recruitment Portal, NITK",
-    github: "",
-    link: "http://recruitment.nitk.ac.in/",
-    image: recruitment,
+    title: "monday.com",
+    link: "https://monday.com/",
+    image: projectMonday,
     content:
-      "The official recruitment portal for non-teaching staff with an admin panel, email notifications and payment integration.",
+      "Work OS for building custom workflows, automations, and cross-team collaboration across projects and operations.",
     stack: [
-      {
-        id: "proj5-icon-1",
-        icon: SiRubyonrails,
-        name: "Ruby on Rails",
-      },
-      {
-        id: "proj5-icon-2",
-        icon: SiTailwindcss,
-        name: "TailwindCSS",
-      },
-      {
-        id: "proj5-icon-3",
-        icon: SiJquery,
-        name: "jQuery",
-      },
+      { id: "p6-1", icon: SiReact, name: "React" },
+      { id: "p6-2", icon: SiGraphql, name: "GraphQL" },
+      { id: "p6-3", icon: SiTypescript, name: "TypeScript" },
+      { id: "p6-4", icon: SiZapier, name: "Automation" },
     ],
   },
   {
     id: "project-7",
-    title: "GreenTrust",
-    github: "https://github.com/yoshiaki-kitade/GreenTrust",
-    link: "https://green-trust-fantom.netlify.app/",
-    image: greentrust,
+    title: "Mieru AI",
+    link: "https://mieru-ai.jp/",
+    image: projectMieru,
     content:
-      "Winning project at 3 hackathons, GreenTrust offers a novel solution for obtaining certification in organic farming by organizing credible and decentralized Participatory Guarantee Systems (PGSs).",
+      "Japanese AI platform focused on practical business visibility, analytics, and intelligent decision support.",
     stack: [
-      {
-        id: "proj6-icon-1",
-        icon: SiReact,
-        name: "React",
-      },
-      {
-        id: "proj6-icon-2",
-        icon: SiTailwindcss,
-        name: "TailwindCSS",
-      },
-      {
-        id: "proj6-icon-3",
-        icon: SiNextdotjs,
-        name: "Next.js",
-      },
-      {
-        id: "proj6-icon-4",
-        icon: SiIpfs,
-        name: "IPFS",
-      },
-      {
-        id: "proj6-icon-5",
-        icon: SiSolidity,
-        name: "Solidity",
-      },
-      {
-        id: "proj6-icon-6",
-        icon: IoIosNotificationsOutline,
-        name: "Push Protocol",
-      },
+      { id: "p7-1", icon: SiPython, name: "Python" },
+      { id: "p7-2", icon: SiOpenai, name: "LLM" },
+      { id: "p7-3", icon: SiReact, name: "React" },
+      { id: "p7-4", icon: SiFastapi, name: "FastAPI" },
     ],
   },
   {
     id: "project-8",
-    title: "ChargeSwap",
-    github: "https://github.com/CommanderAstern/ChargeSwap",
-    link: "https://devfolio.co/projects/chargeswap-3527",
-    image: chargeswap,
+    title: "Benstay AI Accounting",
+    link: "https://benstay.jp/ai-accounting/",
+    image: projectBenstay,
     content:
-      "A Blockchain-based EV-Battery swapping solution - winning project at ETHIndia'22, the world's largest Ethereum Hackathon.",
+      "AI-powered accounting solution for Japanese businesses, automating bookkeeping, reporting, and finance workflows.",
     stack: [
-      {
-        id: "proj7-icon-1",
-        icon: SiReact,
-        name: "React",
-      },
-      {
-        id: "proj7-icon-2",
-        icon: SiWeb3Dotjs,
-        name: "Web3.js",
-      },
-      {
-        id: "proj7-icon-3",
-        icon: SiSolidity,
-        name: "Solidity",
-      },
-      {
-        id: "proj7-icon-4",
-        icon: FaHardHat,
-        name: "HardHat",
-      },
-      {
-        id: "proj7-icon-5",
-        icon: SiIpfs,
-        name: "IPFS",
-      },
-      {
-        id: "proj7-icon-6",
-        icon: SiArduino,
-        name: "Arduino",
-      },
-      {
-        id: "proj7-icon-7",
-        icon: IoIosNotificationsOutline,
-        name: "Push Protocol",
-      },
+      { id: "p8-1", icon: SiOpenai, name: "AI" },
+      { id: "p8-2", icon: TbScan, name: "Document AI" },
+      { id: "p8-3", icon: SiPython, name: "Python" },
+      { id: "p8-4", icon: SiPostgresql, name: "PostgreSQL" },
     ],
   },
   {
     id: "project-9",
-    title: "Samsotech Table Management System",
-    github: "",
-    link: "https://www.linkedin.com/posts/yoshiaki-kitade_technologysolutions-softwaredevelopment-technology-activity-6994915645066809344-WnMY?utm_source=share&utm_medium=member_desktop",
-    image: placeicon,
+    title: "Sanka",
+    link: "https://sanka.com/ja/",
+    image: projectSanka,
     content:
-      "Restaurant, Place, Table and realtime Reservation Management with Multi-Tenant Architecture, RBAC, SMS and Email integration for Samsotech International",
+      "Business operations platform for Japanese teams, streamlining sales, tasks, and workflow automation in one place.",
     stack: [
-      {
-        id: "proj8-icon-1",
-        icon: SiDotnet,
-        name: "Dot Net Core MVC 6",
-      },
-      {
-        id: "proj8-icon-2",
-        icon: SiBootstrap,
-        name: "Bootstrap",
-      },
-      {
-        id: "proj8-icon-3",
-        icon: DiMsqlServer,
-        name: "MS Sql Server",
-      },
-      {
-        id: "proj8-icon-4",
-        icon: SiJquery,
-        name: "jQuery",
-      },
-      {
-        id: "proj8-icon-5",
-        icon: SiTwilio,
-        name: "Twillio",
-      },
-    ],
-  },
-  {
-    id: "project-10",
-    title: "Career Development Centre, NITK Website",
-    github: "",
-    link: "http://cdc.nitk.ac.in/",
-    image: cdc,
-    content: "The official website of CDC, NITK with a custom built CMS.",
-    stack: [
-      {
-        id: "proj9-icon-1",
-        icon: SiRubyonrails,
-        name: "Ruby on Rails",
-      },
-      {
-        id: "proj9-icon-2",
-        icon: SiBootstrap,
-        name: "Bootstrap",
-      },
-      {
-        id: "proj9-icon-3",
-        icon: SiJavascript,
-        name: "JavaScript",
-      },
-    ],
-  },
-  {
-    id: "project-11",
-    title: "Portfolio",
-    github: "https://github.com/yoshiaki-kitade/personal-portfolio",
-    link: "https://yoshiakikitade.netlify.app/",
-    image: portfolio,
-    content: "Open source developer portfolio template with modern UI/UX. 140+ stars on GitHub.",
-    stack: [
-      {
-        id: "proj10-icon-1",
-        icon: SiReact,
-        name: "React",
-      },
-      {
-        id: "proj10-icon-2",
-        icon: SiTailwindcss,
-        name: "Tailwind CSS",
-      },
-      {
-        id: "proj10-icon-3",
-        icon: AiFillHtml5,
-        name: "HTML",
-      },
-    ],
-  },
-  {
-    id: "project-12",
-    title: "Kosh SDK",
-    github: "https://github.com/yoshiaki-kitade/kosh-sdk",
-    link: "https://ethglobal.com/showcase/kosh-hk3mp",
-    image: kosh,
-    content:
-      "Simple and secure way to interact with remote MCP Servers in Trusted Execution Environments (TEEs). Built at ETHGlobal Trifecta Hackathon.",
-    stack: [
-      {
-        id: "proj11-icon-1",
-        icon: SiTypescript,
-        name: "Typescript",
-      },
-      {
-        id: "proj11-icon-2",
-        icon: SiTailwindcss,
-        name: "TailwindCSS",
-      },
-      {
-        id: "proj11-icon-3",
-        icon: SiPython,
-        name: "Python",
-      },
+      { id: "p9-1", icon: SiReact, name: "React" },
+      { id: "p9-2", icon: SiNodedotjs, name: "Node.js" },
+      { id: "p9-3", icon: SiZapier, name: "Workflow" },
+      { id: "p9-4", icon: SiMysql, name: "MySQL" },
     ],
   },
 ];
@@ -1118,22 +692,22 @@ export const blogPosts = [
   },
 ];
 
-// Highlight your GitHub stats like - Organisation, Issues Opened, Pull Requests etc.
+// Career highlights from resume
 export const stats = [
   {
     id: "stats-1",
-    title: "Organisations",
-    value: "2+",
+    title: "Years Experience",
+    value: "9+",
   },
   {
     id: "stats-2",
-    title: "Issues Opened",
-    value: "6+",
+    title: "Tech Stacks",
+    value: "30+",
   },
   {
     id: "stats-3",
-    title: "Pull Requests",
-    value: "6+",
+    title: "Companies",
+    value: "4",
   },
 ];
 

@@ -14,6 +14,7 @@ import {
   BlogPosts,
   Loading,
   Achievements,
+  AnimatedBackground,
 } from "./components";
 
 const App = () => {
@@ -26,14 +27,15 @@ const App = () => {
   }, []);
 
   return (
-    // A div to wrap the entire application
-    <div className="bg-primary w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden min-h-screen">
+      <AnimatedBackground />
       <AnimatePresence>
         {isLoading ? (
           <Loading key="loading" />
         ) : (
           <motion.section
             key="content"
+            className="relative z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -44,24 +46,20 @@ const App = () => {
               </div>
             </div>
 
-            <div className={`bg-primary ${styles.flexStart} pt-[80px]`}>
+            <div className={`${styles.flexStart} pt-[80px]`}>
               <div className={`${styles.boxWidth}`}>
                 <Hero />
               </div>
             </div>
 
-            <div
-              className={`bg-primary ${styles.flexCenter} ${styles.paddingX}`}
-            >
+            <div className={`${styles.flexCenter} ${styles.paddingX}`}>
               <div className={`${styles.boxWidth}`}>
                 <SkillsAndExperience />
                 <Education />
               </div>
             </div>
             <Achievements />
-            <div
-              className={`bg-primary ${styles.flexCenter} ${styles.paddingX}`}
-            >
+            <div className={`${styles.flexCenter} ${styles.paddingX}`}>
               <div className={`${styles.boxWidth}`}>
                 <Projects />
                 <BlogPosts enabled={false} />

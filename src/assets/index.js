@@ -39,6 +39,19 @@ import polkadot_dev_cli from "./polkadot-dev-cli.png";
 import hackathon_curation_agent from "./hackathon_curation_agent.png";
 import kudos from "./kudos.svg";
 import web3_marketing_hackathon from "./web3_marketing_hackathon.jpg";
+import projectFin from "./project-fin.png";
+import projectRossum from "./project-rossum.png";
+import projectLangsmith from "./project-langsmith.png";
+import projectGlean from "./project-glean.png";
+import projectPortainer from "./project-portainer.png";
+import projectMonday from "./project-monday.png";
+import projectMieru from "./project-mieru.png";
+import projectBenstay from "./project-benstay.png";
+import projectSanka from "./project-sanka.png";
+import nextgenSystems from "./nextgen_systems.png";
+import monoya from "./monoya.png";
+import gunosy from "./gunosy.png";
+import nssolutions from "./nssolutions.png";
 
 export {
   menu,
@@ -81,5 +94,18 @@ export {
   placeholder,
   hackathon_curation_agent,
   kudos,
-  web3_marketing_hackathon
+  web3_marketing_hackathon,
+  projectFin,
+  projectRossum,
+  projectLangsmith,
+  projectGlean,
+  projectPortainer,
+  projectMonday,
+  projectMieru,
+  projectBenstay,
+  projectSanka,
+  nextgenSystems,
+  monoya,
+  gunosy,
+  nssolutions,
 };

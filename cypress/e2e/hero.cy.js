@@ -20,8 +20,8 @@ describe('Hero section', () => {
     cy.get('#home').contains(aboutMe.intro).should('be.visible');
   });
 
-  it('has Lottie animation container', () => {
-    cy.get('#home').find('[class*="z-index-[5]"]').should('exist');
+  it('has fantasy hero animation', () => {
+    cy.get('#home').find('.fantasy-hero-visual').should('exist');
   });
 
   describe('Responsiveness', () => {
@@ -33,14 +33,16 @@ describe('Hero section', () => {
       });
     });
 
-    it('mobile: stacked layout and Lets Connect visible below', () => {
+    it('mobile: stacked layout and planet connect button visible', () => {
       cy.viewport(375, 667);
       cy.get('#home').scrollIntoView();
       cy.get('#home').should('be.visible');
-      // On mobile flex-col so direction column; Lets Connect visible in bottom area
       cy.get('#home').invoke('css', 'flex-direction').then((dir) => {
         expect(dir).to.equal('column');
       });
+      cy.get('#home').find('.planet-connect').should('be.visible');
+      cy.contains("Let's").should('be.visible');
+      cy.contains('Connect').should('be.visible');
     });
   });
 });
