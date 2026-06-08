@@ -66,26 +66,41 @@ const Contribution = (props) => {
 
 const OpenSource = () => {
   const { t } = useLanguage();
-  const [contributions, setContributions] = useState([]);
+  const [contributions, setContributions] = useState(null);
   const [filterContribution, setFilterContribution] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
   const [filters, setFilters] = useState(["All"]);
   const filterAllLabel = t.sections.openSource.filterAll;
+  const hasError = Boolean(contributions?.error);
+  const contributionList = Array.isArray(contributions) ? contributions : [];
+  const isLoading = contributions === null;
 
   useEffect(() => {
+    let cancelled = false;
+
     const getContributions = async () => {
       const fetchedContributions = await fetchContributionsWithRetry();
-      setContributions(fetchedContributions);
-      setFilterContribution(fetchedContributions);
+      if (cancelled) return;
 
-      // Filters based on fetched contributions
-      if (!fetchedContributions.error) {
-        const uniqueRepos = [...new Set(fetchedContributions.map(c => c.repo))];
-        setFilters(["All", ...uniqueRepos]);
+      if (fetchedContributions?.error) {
+        setContributions({ error: fetchedContributions.error });
+        setFilterContribution([]);
+        return;
       }
+
+      const list = Array.isArray(fetchedContributions) ? fetchedContributions : [];
+      setContributions(list);
+      setFilterContribution(list);
+
+      const uniqueRepos = [...new Set(list.map((c) => c.repo).filter(Boolean))];
+      setFilters(["All", ...uniqueRepos]);
     };
 
     getContributions();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleContributionFilter = (item) => {
@@ -93,12 +108,15 @@ const OpenSource = () => {
     setActiveFilter(filterValue);
 
     setTimeout(() => {
+      if (!Array.isArray(contributions)) return;
+
       if (filterValue === "All") {
         setFilterContribution(contributions);
       } else {
         setFilterContribution(
           contributions.filter(
-            (contribution) => contribution.repo.toLowerCase() == filterValue.toLowerCase()
+            (contribution) =>
+              contribution.repo?.toLowerCase() === filterValue.toLowerCase()
           )
         );
       }
@@ -117,7 +135,7 @@ const OpenSource = () => {
 
       <div className="container px-2 py-5 mx-auto mb-8">
         <div className="flex items-center justify-center">
-          {!contributions.error && (
+          {!hasError && !isLoading && contributionList.length > 0 && (
             <div className="flex flex-wrap items-center p-1 border border-blue-gradient dark:border-teal-400 rounded-xl">
               {filters.map(
                 (item, index) => (
@@ -135,7 +153,11 @@ const OpenSource = () => {
             </div>
           )}
         </div>
-        {contributions.error ? (
+        {isLoading ? (
+          <p className="font-poppins text-dimWhite text-center mt-8">
+            Loading contributions...
+          </p>
+        ) : hasError ? (
           <div className="flex flex-col sm:-mx-4 sm:flex-row">
             <AiFillApi
               size="2rem"
@@ -155,7 +177,7 @@ const OpenSource = () => {
           <div className="grid grid-cols-1 justify-center gap-8 mt-8 md:mt-16 md:grid-cols-3 sm:grid-cols-2">
             {filterContribution.map((contribution, index) => (
               <Contribution
-                key={contribution.id}
+                key={contribution.id ?? `${contribution.link}-${index}`}
                 index={index}
                 {...contribution}
               />

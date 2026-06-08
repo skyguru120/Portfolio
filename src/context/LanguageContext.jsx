@@ -5,14 +5,26 @@ const LanguageContext = createContext(null);
 
 const STORAGE_KEY = "portfolio-locale";
 
-export const LanguageProvider = ({ children }) => {
-  const [locale, setLocale] = useState(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
+const readStoredLocale = () => {
+  if (typeof window === "undefined") return "en";
+
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
     return stored === "ja" ? "ja" : "en";
-  });
+  } catch {
+    return "en";
+  }
+};
+
+export const LanguageProvider = ({ children }) => {
+  const [locale, setLocale] = useState(readStoredLocale);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, locale);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, locale);
+    } catch {
+      // Ignore storage errors (private browsing, blocked storage, etc.)
+    }
     document.documentElement.lang = locale;
   }, [locale]);
 

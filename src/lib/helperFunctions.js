@@ -1,26 +1,34 @@
 import axios from "axios";
 import { aboutMe, itemsToFetch, includedRepos } from "../constants";
 
+const CONTRIBUTIONS_ENDPOINT = "/api/fetchContributions";
+
 export const scrollToSection = (id) => {
   const element = document.getElementById(id);
+  if (!element) return;
+
   const yOffset = -70;
   const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-
   window.scrollTo({ top: y, behavior: "smooth" });
 };
 
+export const normalizeExternalUrl = (url) => {
+  const trimmed = url.trim();
+
+  if (!trimmed) return "#";
+  if (/^mailto:/i.test(trimmed)) return trimmed;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (trimmed.includes("@") && !trimmed.includes("/")) {
+    return `mailto:${trimmed}`;
+  }
+  if (trimmed.startsWith("//")) return `https:${trimmed}`;
+  return `https://${trimmed}`;
+};
+
 const parseOriginFromUrl = (url) => {
-  /**
-   * splits https://github.com/repos/org-name/repo-name/issues/25
-   * into [ "github.com", "repos", "org-name", "repo-name", "issues", "25"]
-   */
   const [, ...parts] = url.split(/https:\/\/|\//gm);
   const organization = parts[1];
   const repo = parts[2];
-  /**
-   * accessing a github profile or organization and adding a .png
-   * at the end of the URL will return their logo/profile picture
-   */
   const logoUrl = `https://github.com/${organization}.png`;
 
   return {
@@ -30,64 +38,39 @@ const parseOriginFromUrl = (url) => {
   };
 };
 
-export async function fetchContributionsWithRetry(maxRetries = 1) {
-  let attempts = 0;
-
-  while (attempts <= maxRetries) {
-    try {
-      const result = await fetchContributions();
-      return result;
-    } catch (error) {
-      attempts++;
-      console.log(`Attempt ${attempts} failed: ${error.message}. Retrying...`);
-
-      if (attempts > maxRetries) {
-        console.log("Max retries reached. Returning last error.");
-        return { error: error.message };
-      }
-    }
+export async function fetchContributionsWithRetry() {
+  try {
+    return await fetchContributions();
+  } catch (error) {
+    return {
+      error: error.response?.data?.error || error.message || "Failed to fetch contributions",
+    };
   }
-}
-
-function generatePRQuery(repos, username) {
-  const queries = repos
-    .map((repo) => {
-      return `repo:${repo} is:pr author:${username}`;
-    })
-    .join(" ");
-
-  return `
-    query {
-      search(query: "${queries}", type: ISSUE, first: ${itemsToFetch}) {
-        nodes {
-          ... on PullRequest {
-            id
-            title
-            state
-            number
-            createdAt
-            url
-            additions
-            deletions
-          }
-        }
-      }
-    }
-  `;
 }
 
 export async function fetchContributions() {
-  try {
-    // Use the Netlify function to fetch contributions
-    // to avoid exposing the Github token into the client side build output
-    const response = await axios.post('/.netlify/functions/fetchContributions', {
-      repos: includedRepos,
-      username: aboutMe.githubUsername
-    });
+  const payload = {
+    repos: includedRepos,
+    username: aboutMe.githubUsername,
+    limit: itemsToFetch,
+  };
 
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching contributions from Netlify function: ", error);
-    throw error;
+  const response = await axios.post(CONTRIBUTIONS_ENDPOINT, payload, {
+    validateStatus: () => true,
+  });
+
+  if (response.status >= 400) {
+    const message =
+      response.data?.error ||
+      `Contributions API responded with status ${response.status}`;
+    throw Object.assign(new Error(message), { response });
   }
+
+  if (response.data?.error) {
+    throw new Error(response.data.error);
+  }
+
+  return response.data;
 }
+
+export { parseOriginFromUrl };

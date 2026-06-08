@@ -128,7 +128,8 @@ export const resumeLink =
   "https://drive.google.com/file/d/1j7DBYsl_va685KO2oZ6Ho-1ZZHdjPp3I/view?usp=sharing";
 export const repoLink = "https://yoshiaki-344i.vercel.app";
 
-export const callToAction = "linkedin.com/in/yoshiaki-kitade-37677840b";
+export const callToAction =
+  "https://www.linkedin.com/in/yoshiaki-kitade-37677840b";
 
 export const navLinks = [
   {
@@ -801,7 +802,7 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: AiFillLinkedin,
-    link: " https://www.linkedin.com/in/yoshiaki-kitade-37677840b",
+    link: "https://www.linkedin.com/in/yoshiaki-kitade-37677840b",
   },
   {
     id: "social-media-2",
@@ -811,7 +812,7 @@ export const socialMedia = [
   {
     id: "social-media-3",
     icon: AiFillMail,
-    link: "yoshiakikitade@gmail.com",
+    link: "mailto:yoshiakikitade@gmail.com",
   },
   {
     id: "social-media-4",

@@ -6,6 +6,7 @@ import { layout } from "../style";
 import { resumeLink } from "../constants";
 import { AiFillFilePdf } from "react-icons/ai";
 import { useLanguage } from "../context/LanguageContext";
+import { normalizeExternalUrl } from "../lib/helperFunctions";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -25,12 +26,12 @@ const Footer = () => {
             {t.aboutMe.tagLine}
           </p>
           <div className="flex flex-row mt-4">
-            {socialMedia.map((social, index) => (
+            {socialMedia.map((social) => (
               <a
-                href={social.link}
+                href={normalizeExternalUrl(social.link)}
                 target="_blank"
+                rel="noopener noreferrer"
                 key={social.id}
-                index={index}
                 className="text-white mr-5 text-[25px] hover:text-teal-200"
               >
                 {React.createElement(social.icon)}
