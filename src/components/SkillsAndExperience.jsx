@@ -1,7 +1,13 @@
 import React from "react";
+import { BsLink45Deg } from "react-icons/bs";
 import { experiences, skills } from "../constants";
 import { layout } from "../style";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import {
+  getLocalizedExperiences,
+  getLocalizedSkills,
+} from "../i18n";
 
 export const SkillIcon = ({ icon, name }) => {
   return (
@@ -67,11 +73,13 @@ const ExperienceCard = (props) => {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="flex flex-row items-center mb-6">
-        <img
-          src={props.logo}
-          alt={props.organisation}
-          className="w-[52px] h-[52px] rounded-full z-[2]"
-        />
+        <span className="experience-logo">
+          <img
+            src={props.logo}
+            alt={props.organisation}
+            className="experience-logo__img"
+          />
+        </span>
         <h4 className="font-poppins font-semibold text-[20px] text-gradient leading-[32px] ml-2">
           {props.organisation}
         </h4>
@@ -103,24 +111,28 @@ const ExperienceCard = (props) => {
 };
 
 const SkillsAndExperience = () => {
+  const { t } = useLanguage();
+  const localizedSkills = getLocalizedSkills(skills, t);
+  const localizedExperiences = getLocalizedExperiences(experiences, t);
+
   return (
     <section id="skills" className="mb-12">
       <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Skills & Experience
+        {t.sections.skills}
       </h1>
       <div
         className={layout.section}
       >
         {/* Skills */}
         <motion.div className={`ml-2 mb-6 ${layout.sectionInfo}`}>
-          {skills.map((skill, index) => (
+          {localizedSkills.map((skill, index) => (
             <SkillCard key={index} index={index} {...skill} />
           ))}
         </motion.div>
 
         {/* Experience */}
         <motion.div className="flex flex-1 items-center justify-start flex-col">
-          {experiences.map((exp, index) => (
+          {localizedExperiences.map((exp, index) => (
             <ExperienceCard key={index} index={index} {...exp} />
           ))}
         </motion.div>

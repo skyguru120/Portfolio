@@ -1,29 +1,55 @@
-import styles from "../style";
-import { arrowUp } from "../assets";
+import { motion } from "framer-motion";
 import { callToAction } from "../constants";
+import { useLanguage } from "../context/LanguageContext";
 
-const LetsConnect = () => {
+const LetsConnect = ({ className = "" }) => {
+  const { t } = useLanguage();
+
   return (
-    <div
-      className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-blue-gradient p-[2px] cursor-pointer`}
+    <motion.button
+      type="button"
+      className={`planet-connect group ${className}`}
       onClick={() => window.open(callToAction)}
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.94 }}
+      animate={{ y: [0, -10, 0] }}
+      transition={{
+        y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 0.2 },
+      }}
+      aria-label={t.letsConnect.ariaLabel}
     >
-      <div
-        className={`${styles.flexCenter} flex-col bg-primary w-[100%] h-[100%] rounded-full`}
-      >
-        <div className={`${styles.flexStart} flex-row`}>
-          <p className="font-poppins font-medium text-[18px] leading-[23px]">
-            <span className="text-gradient">Let's</span>
-          </p>
-          <img src={arrowUp} alt="arrowUp" className="w-[23px] h-[23px] " />
-        </div>
-        <div className={`${styles.flexStart} flex-row`}>
-          <p className="font-poppins font-medium text-[18px] leading-[23px]">
-            <span className="text-gradient">Connect</span>
-          </p>
-        </div>
-      </div>
-    </div>
+      <span className="planet-connect__scene">
+        <span className="planet-connect__halo" aria-hidden="true" />
+        <motion.span
+          className="planet-connect__ring"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          aria-hidden="true"
+        />
+        <motion.span
+          className="planet-connect__ring planet-connect__ring--inner"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          aria-hidden="true"
+        />
+        <span className="planet-connect__glow" aria-hidden="true" />
+        <span className="planet-connect__sphere" aria-hidden="true">
+          <span className="planet-connect__highlight" />
+          <span className="planet-connect__highlight planet-connect__highlight--2" />
+          <span className="planet-connect__crater planet-connect__crater--1" />
+          <span className="planet-connect__crater planet-connect__crater--2" />
+        </span>
+        <span className="planet-connect__spark planet-connect__spark--1" aria-hidden="true" />
+        <span className="planet-connect__spark planet-connect__spark--2" aria-hidden="true" />
+      </span>
+      <span className="planet-connect__label">
+        <span className="planet-connect__label-text">{t.letsConnect.line1}</span>
+        <span className="planet-connect__label-text planet-connect__label-text--accent">
+          {t.letsConnect.line2}
+        </span>
+      </span>
+    </motion.button>
   );
 };
 

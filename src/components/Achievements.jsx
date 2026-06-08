@@ -7,28 +7,52 @@ import { motion } from "framer-motion";
 import { LinkPreview } from "./LinkPreview";
 import { achievements } from "../constants";
 import styles from "../style";
+import { useLanguage } from "../context/LanguageContext";
+import { getLocalizedAchievements } from "../i18n";
+
+const cardVariants = {
+  hidden: { y: 28, opacity: 0, scale: 0.96 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { delay: i * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
 
 const Achievements = () => {
+  const { t } = useLanguage();
+  const localizedAchievements = getLocalizedAchievements(achievements, t);
+
   return (
-    <section
-      className="bg-primary text-white mt-5 md:mt-10 relative"
-      id="achievements"
-    >
-      <div className={`bg-primary ${styles.flexCenter} ${styles.paddingX}`}>
+    <section className="achievements-section text-white mt-5 md:mt-10 relative" id="achievements">
+      <div className="achievements-section__aurora achievements-section__aurora--1" aria-hidden="true" />
+      <div className="achievements-section__aurora achievements-section__aurora--2" aria-hidden="true" />
+
+      <div className={`relative z-[1] ${styles.flexCenter} ${styles.paddingX}`}>
         <div className={`${styles.boxWidth}`}>
-          <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-            Achievements
-          </h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <h1 className="font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
+              {t.sections.achievements.title}
+            </h1>
+            <p className="font-poppins text-dimWhite text-[17px] max-w-[640px] mt-2 mb-2">
+              {t.sections.achievements.subtitle}
+            </p>
+          </motion.div>
         </div>
       </div>
-      <div className="absolute z-[0] w-[60%] h-[60%] -left-[50%] rounded-full blue__gradient bottom-40" />
-      <div className={`bg-primary ${styles.flexCenter} ${styles.paddingX}`}>
+
+      <div className={`relative z-[1] ${styles.flexCenter} ${styles.paddingX}`}>
         <div className={`${styles.boxWidth}`}>
           <div className="container px-2 py-10 mx-auto mb-8">
-            <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-              {/* Render all achievement cards in scrollable grid */}
-              {achievements.map((achievement, index) => (
-                <AchievementCard key={index} index={index} {...achievement} />
+            <div className="grid grid-cols-1 gap-8 mt-8 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
+              {localizedAchievements.map((achievement, index) => (
+                <AchievementCard key={achievement.id} index={index} {...achievement} />
               ))}
             </div>
           </div>
@@ -39,106 +63,97 @@ const Achievements = () => {
 };
 
 const AchievementCard = (props) => {
+  const bullets = [props.content1, props.content2, props.content3].filter(Boolean);
+
   return (
     <motion.div
-      className="flex flex-col justify-around px-6 py-4 rounded-[20px] transition-colors transition-shadow duration-300 border hover:border-teal-200 hover:shadow-lg hover:shadow-teal-200/20 dark:border-gray-700 dark:hover:border-transparent"
-      initial={{ y: 20, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      custom={props.index}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 320, damping: 22 }}
+      className="achievement-card group"
     >
-      {/* Achievement icon/logo */}
-      <img
-        src={props.icon}
-        alt={props.event}
-        className="w-[45px] h-[45px] rounded-full mt-1 mb-1"
-      />
-      <div className="flex flex-col justify-end mt-4 mb-1">
-        {/* Event name */}
-        <p className="font-poppins font-normal text-xl text-white leading-[24px] mb-2">
-          {props.event}
-        </p>
-        {/* Position/Award */}
-        <p className="font-poppins italic font-normal text-lg text-gradient mb-3">
-          {props.position}
-        </p>
-        {/* Achievement descriptions - only render if content exists */}
-        {props.content1 && (
-          <p className="font-poppins font-normal text-dimWhite text-sm mb-1">
-            🚀 {props.content1}
+      <span className="achievement-card__glow" aria-hidden="true" />
+      <span className="achievement-card__border" aria-hidden="true" />
+
+      <div className="achievement-card__header">
+        <span className="experience-logo achievement-card__logo">
+          <img
+            src={props.icon}
+            alt={props.event}
+            className="experience-logo__img"
+          />
+        </span>
+        <div className="achievement-card__titles">
+          <p className="font-poppins font-semibold text-lg text-white leading-snug group-hover:text-teal-100 transition-colors">
+            {props.event}
           </p>
-        )}
-        {props.content2 && (
-          <p className="font-poppins font-normal text-dimWhite text-sm mb-1">
-            ⚡ {props.content2}
-          </p>
-        )}
-        {props.content3 && (
-          <p className="font-poppins font-normal text-dimWhite text-sm mb-4">
-            🔥 {props.content3}
-          </p>
-        )}
+          <p className="font-poppins italic text-sm text-gradient mt-1">{props.position}</p>
+        </div>
       </div>
-      {/* Social/Project links with hover preview - only render if link exists */}
-      <div className="flex flex-row mb-2 font-poppins font-normal text-dimWhite gap-3">
-        {props.article && (
-          <LinkPreview url={props.article}>
-            <a
-              href={props.article}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all"
-            >
-              <TiNews size="1.5rem" className="inline" />
-            </a>
-          </LinkPreview>
-        )}
-        {props.youtube && (
-          <LinkPreview
-            url={props.youtube}
-            className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all"
+
+      <ul className="achievement-card__list mt-4 space-y-2">
+        {bullets.map((text, i) => (
+          <li
+            key={i}
+            className="font-poppins text-dimWhite text-sm leading-relaxed flex gap-2 group-hover:text-white/90 transition-colors"
           >
-            <a
-              href={props.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center"
-            >
-              <FaYoutube size="1.5rem" className="inline" />
-            </a>
-          </LinkPreview>
-        )}
-        {props.github && (
-          <LinkPreview
-            url={props.github}
-            className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all"
-          >
-            <a
-              href={props.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center"
-            >
-              <AiFillGithub size="1.5rem" className="inline" />
-            </a>
-          </LinkPreview>
-        )}
-        {props.project && (
-          <LinkPreview
-            url={props.project}
-            className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all"
-          >
-            <a
-              href={props.project}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center"
-            >
-              <BsLink45Deg size="1.5rem" className="inline" />
-            </a>
-          </LinkPreview>
-        )}
-      </div>
+            <span className="achievement-card__bullet" aria-hidden="true" />
+            <span>{text}</span>
+          </li>
+        ))}
+      </ul>
+
+      {props.tags?.length > 0 && (
+        <div className="achievement-card__tags mt-5 flex flex-wrap gap-2">
+          {props.tags.map((tag) => (
+            <span key={tag} className="achievement-card__tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {(props.article || props.youtube || props.github || props.project) && (
+        <div className="flex flex-row mt-5 font-poppins text-dimWhite gap-3">
+          {props.article && (
+            <LinkPreview url={props.article}>
+              <a
+                href={props.article}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all"
+              >
+                <TiNews size="1.5rem" />
+              </a>
+            </LinkPreview>
+          )}
+          {props.youtube && (
+            <LinkPreview url={props.youtube} className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all">
+              <a href={props.youtube} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
+                <FaYoutube size="1.5rem" />
+              </a>
+            </LinkPreview>
+          )}
+          {props.github && (
+            <LinkPreview url={props.github} className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all">
+              <a href={props.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
+                <AiFillGithub size="1.5rem" />
+              </a>
+            </LinkPreview>
+          )}
+          {props.project && (
+            <LinkPreview url={props.project} className="inline-flex items-center hover:text-teal-200 hover:scale-110 transition-all">
+              <a href={props.project} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
+                <BsLink45Deg size="1.5rem" />
+              </a>
+            </LinkPreview>
+          )}
+        </div>
+      )}
     </motion.div>
   );
 };

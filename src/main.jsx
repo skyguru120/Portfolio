@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import smoothscroll from 'smoothscroll-polyfill'
+import { LanguageProvider } from './context/LanguageContext'
 
 smoothscroll.polyfill();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
   </React.StrictMode>
 )
