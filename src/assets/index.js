@@ -8,7 +8,7 @@ import cluboard from "./cluboard.png";
 import cash_flow from "./cash_flow.jpg";
 import ecell from "./ecell.png";
 import gdsc from "./gdsc.png";
-import iris from "./iris.png";
+import iris from "./iris.jpg";
 import genesis from "./genesis.jpg";
 import portfolio from "./portfolio.jpg";
 import cdc from "./cdc.png";

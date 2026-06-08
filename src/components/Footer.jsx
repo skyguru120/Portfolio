@@ -43,13 +43,13 @@ const Footer = () => (
               icon={AiFillFilePdf}
             />
           </a>
-          <a href={repoLink} target="_blank">
+          {/* <a href={repoLink} target="_blank">
             <Button
               styles="mt-10 inline-flex items-center justify-center"
               text="Star"
               icon={AiFillGithub}
             />
-          </a>
+          </a> */}
         </div>
       </div>
 

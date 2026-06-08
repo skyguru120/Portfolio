@@ -94,10 +94,11 @@ import { BiLogoVisualStudio } from "react-icons/bi";
 import { RiGeminiFill } from "react-icons/ri";
 
 export const resumeLink =
-  "https://drive.google.com/file/d/1vkxyMDB5_KpMwt4QXFgT2aqdRizr8Czh/view?usp=sharing";
-export const repoLink = "https://github.com/yoshiaki-kitade/personal-portfolio";
+  // "https://drive.google.com/file/d/1vkxyMDB5_KpMwt4QXFgT2aqdRizr8Czh/view?usp=sharing";
+  "https://drive.google.com/file/d/1j7DBYsl_va685KO2oZ6Ho-1ZZHdjPp3I/view?usp=sharing";
+export const repoLink = "https://yoshiaki-344i.vercel.app";
 
-export const callToAction = "https://www.linkedin.com/in/yoshiaki-kitade";
+export const callToAction = "linkedin.com/in/yoshiaki-kitade-37677840b";
 
 export const navLinks = [
   {
@@ -135,18 +136,17 @@ export const educationList = [
   {
     id: "education-1",
     icon: nitk,
-    title: "National Institute of Technology Karnataka, Surathkal",
+    title: "Singapore Institute of Technology",
     degree: "Bachelor of Technology",
-    duration: "December 2020 - May 2024",
-    content1: "Major: Electronics and Communication Engineering",
-    content2: "Minor: Information Technology",
+    duration: "August 2012 - August 2016",
+    content1: "Major: Information Technology",
   },
   {
     id: "education-2",
     icon: pba,
     title: "Polkadot Blockchain Academy",
     degree: "",
-    duration: "May 2024 - June 2024",
+    duration: "May 2016 - June 2016",
     content1:
       "Graduated with a distinction in the fifth cohort of the Polkadot Blockchain Academy at the National University of Singapore.",
   },
@@ -470,69 +470,70 @@ export const skills = [
 // Add your current/past professional work experience here
 export const experiences = [
   {
-    organisation: "Oracle, India",
+    organisation: " NextGen Systems",
     logo: oracle,
-    link: "https://www.oracle.com/in/",
+    // link: "https://www.oracle.com/in/",
     positions: [
+      // {
+      //   title: "Member of Technical Staff",
+      //   duration: "Oct 2025 - Present",
+      //   content: [
+      //     {
+      //       text: "Working in the Database as a Service Control Plane team for Oracle Cloud Infrastructure.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Member of Technical Staff - 1",
+      //   duration: "Jul 2024 - Sep 2025",
+      //   content: [
+      //     {
+      //       text: "Made several fixes to reduce the time taken for backup deletion from OCI Object Storage for large customers resulting in decreased costs.",
+      //       link: "",
+      //     },
+      //     {
+      //       text: "Worked towards building an AI On-Call Agent using an internal agentic framework.",
+      //       link: "",
+      //     },
+      //     {
+      //       text: "Developed a common integration test framework for ExaCS, ExaDB-XS and ExaCC, reducing code maintenance by ~67% and increased coverage by ~50%",
+      //       link: "",
+      //     },
+      //   ],
+      // },
       {
-        title: "Member of Technical Staff",
-        duration: "Oct 2025 - Present",
+        title: "Sr Full Stack Engineer",
+        duration: "Oct 2024 - Apr 2026",
         content: [
           {
-            text: "Working in the Database as a Service Control Plane team for Oracle Cloud Infrastructure.",
-            link: "",
-          },
-        ],
-      },
-      {
-        title: "Member of Technical Staff - 1",
-        duration: "Jul 2024 - Sep 2025",
-        content: [
-          {
-            text: "Made several fixes to reduce the time taken for backup deletion from OCI Object Storage for large customers resulting in decreased costs.",
+            text: "Developed AI-assisted web applications using React, Node.js, and Python to streamline business operations and automate data processing workflows.",
             link: "",
           },
           {
-            text: "Worked towards building an AI On-Call Agent using an internal agentic framework.",
+            text: "Improved onboarding completion by 14% after rebuilding a brittle signup flow across Next.js,Python APIs, and event tracking, fixing validation edge cases, duplicate account creation, and post-launch funnel blind spots.",
             link: "",
           },
-          {
-            text: "Developed a common integration test framework for ExaCS, ExaDB-XS and ExaCC, reducing code maintenance by ~67% and increased coverage by ~50%",
-            link: "",
-          },
-        ],
-      },
-      {
-        title: "Member of Technical Staff Intern",
-        duration: "May 2023 - Jul 2023",
-        content: [
-          {
-            text: "Worked with the Exadata Cloud@Customer team in the Database Unit.",
-            link: "",
-          },
-          {
-            text: "Wrote APIs in Java to help gracefully migrate a running ExaC@C infrastructure to a new region in the case of a region failure",
-            link: "",
-          },
+          
         ],
       },
     ],
   },
   {
-    organisation: "Averlon",
+    organisation: "monoya",
     logo: averlon,
-    link: "https://averlon.ai/",
+    // link: "https://averlon.ai/",
     positions: [
       {
-        title: "Software Developer Intern",
-        duration: "Sept 2023 - Feb 2024",
+        title: "Python Developer",
+        duration: "Apr 2021 - Sept 2024",
         content: [
           {
-            text: "Added support for the discoverability of Microsoft Azure assets utilising Go and Gremlin.",
+            text: "Led the development of AI-powered business automation platforms using React, FastAPI, and OpenAI APIs. ",
             link: "",
           },
           {
-            text: "Extended support for Azure for reachability analysis of assets for cloud security posture management.",
+            text: "Managed comprehensive DevOps tasks on Linux servers, covering database management, Grafana setup, and project metric monitoring, ensuring system reliability and uptime.",
             link: "",
           },
         ],
@@ -540,54 +541,109 @@ export const experiences = [
     ],
   },
   {
-    organisation: "IRIS, NITK",
+    organisation: "Gunosy, Inc.",
     logo: iris,
-    link: "https://iris.nitk.ac.in/about_us",
+    // link: "https://iris.nitk.ac.in/about_us",
     positions: [
       {
-        title: "Tech Lead",
-        duration: "Apr 2023 - Apr 2024",
+        title: "Software Developer",
+        duration: "Jul 2019 - Mar 2021",
         content: [
           {
-            text: "Led a team of 40+ students in digitizing administrative, academic and alumni-related work.",
+            text: "Built backend systems and AI processing services using Python and PHP for enterprise web applications. ",
             link: "",
           },
           {
-            text: "Managed all phases of Software Development Life Cycle (SDLC) for 15+ modules.",
+            text: "The application was based on a service-oriented architecture and used Python 2.7, Django 1.5, JSF 2, Spring 2, AJAX, HTML, and CSS for the frontend.",
+            link: "",
+          },
+          {
+            text: "Created Python and Bash tools to increase the efficiency of the call center application system and operations; data conversion scripts, AMQP/Rabbit MQ, REST, JSON, and CRUD scripts for API integration.",
             link: "",
           },
         ],
       },
-      {
-        title: "Web Lead",
-        duration: "Apr 2022 - Present",
-        content: [
-          {
-            text: "Managed a team of 6 student developers while also overlooking multiple modules.",
-            link: "",
-          },
-        ],
-      },
+      // {
+      //   title: "Web Lead",
+      //   duration: "Apr 2022 - Present",
+      //   content: [
+      //     {
+      //       text: "Managed a team of 6 student developers while also overlooking multiple modules.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Web Developer",
+      //   duration: "Nov 2021 - Apr 2022",
+      //   content: [
+      //     {
+      //       text: "Added Conditional Fields support to the Forms Module.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Web Developer Intern",
+      //   duration: "Jun 2021 - Oct 2021",
+      //   content: [
+      //     {
+      //       text: "Developed a multi-role approval flow system to facilitate data collection and display on the Institute's Department Websites.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+    ],
+  },
+  {
+    organisation: "NS Solutions Corp",
+    logo: iris,
+    // link: "https://iris.nitk.ac.in/about_us",
+    positions: [
       {
         title: "Web Developer",
-        duration: "Nov 2021 - Apr 2022",
+        duration: "Sept 2016 - Jun 2019",
         content: [
           {
-            text: "Added Conditional Fields support to the Forms Module.",
+            text: "Integrated websites with different CMS systems such as Joomla, WordPress, and Drupal.",
+            link: "",
+          },
+          {
+            text: "Developed responsive cross-browser web applications utilizing modern HTML, CSS,and JavaScript technologies.",
             link: "",
           },
         ],
       },
-      {
-        title: "Web Developer Intern",
-        duration: "Jun 2021 - Oct 2021",
-        content: [
-          {
-            text: "Developed a multi-role approval flow system to facilitate data collection and display on the Institute's Department Websites.",
-            link: "",
-          },
-        ],
-      },
+      // {
+      //   title: "Web Lead",
+      //   duration: "Apr 2022 - Present",
+      //   content: [
+      //     {
+      //       text: "Managed a team of 6 student developers while also overlooking multiple modules.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Web Developer",
+      //   duration: "Nov 2021 - Apr 2022",
+      //   content: [
+      //     {
+      //       text: "Added Conditional Fields support to the Forms Module.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Web Developer Intern",
+      //   duration: "Jun 2021 - Oct 2021",
+      //   content: [
+      //     {
+      //       text: "Developed a multi-role approval flow system to facilitate data collection and display on the Institute's Department Websites.",
+      //       link: "",
+      //     },
+      //   ],
+      // },
     ],
   },
 ];
@@ -1194,10 +1250,10 @@ export const socialMedia = [
 export const aboutMe = {
   name: "Yoshiaki Kitade",
   githubUsername: "yoshiaki-kitade",
-  tagLine:
-    "MTS @ Oracle | 12x Hackathon Winner | ETHIndia'22,24 Winner | NITK'24 | PBA-5",
+  // tagLine:
+  //   "MTS @ Oracle | 12x Hackathon Winner | ETHIndia'22,24 Winner | NITK'24 | PBA-5",
   intro:
-    "Software Developer from India who is either busy improving his craft or pondering over the next big idea.",
+    "Software Engineer from Japan who is either busy improving his craft or pondering over the next big idea.",
 };
 
 // The maximum number of PRs to be displayed in the Open Source Contributions section.
