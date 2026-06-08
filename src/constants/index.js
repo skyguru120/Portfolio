@@ -162,11 +162,11 @@ export const achievements = [
     content1: "Top 10 Overall Finalists/Winners, True Network's Winner",
     content2: "Polkadot's 1st Runner Up, Lit Protocol's 2nd Runner Up",
     content3: "Coinbase Pool Prize, Base Top 10",
-    article:
-      "https://www.linkedin.com/posts/yoshiaki-kitade_super-stoked-to-announce-that-our-team-emerged-activity-7274735259621961729-tkq4?utm_source=share&utm_medium=member_desktop",
-    project: "https://devfolio.co/projects/khoj-3336",
-    youtube:
-      "https://www.youtube.com/live/qJ4OCtnvjUY?si=VkcnHEdwJTEEDlMg&t=4718",
+    // article:
+    //   "https://www.linkedin.com/posts/yoshiaki-kitade_super-stoked-to-announce-that-our-team-emerged-activity-7274735259621961729-tkq4?utm_source=share&utm_medium=member_desktop",
+    // project: "https://devfolio.co/projects/khoj-3336",
+    // youtube:
+    //   "https://www.youtube.com/live/qJ4OCtnvjUY?si=VkcnHEdwJTEEDlMg&t=4718",
   },
   {
     id: "a-2",
@@ -176,10 +176,10 @@ export const achievements = [
     content1: "Top 12 Winners among 20k+ registrations",
     content2: "One of Polygon's Best Public Goods",
     content3: "Best Module on Biconomy SDK",
-    article:
-      "https://www.thehindu.com/news/cities/Mangalore/nitk-iiit-delhi-team-makes-it-to-top-12-winners-in-ethindia-22/article66238923.ece",
-    project: "https://devfolio.co/projects/chargeswap-3527",
-    youtube: "https://youtu.be/9rieTya8Yds?t=3908",
+    // article:
+    //   "https://www.thehindu.com/news/cities/Mangalore/nitk-iiit-delhi-team-makes-it-to-top-12-winners-in-ethindia-22/article66238923.ece",
+    // project: "https://devfolio.co/projects/chargeswap-3527",
+    // youtube: "https://youtu.be/9rieTya8Yds?t=3908",
   },
   {
     id: "a-3",
@@ -190,9 +190,9 @@ export const achievements = [
       "Built GreenTrust offering a novel solution for obtaining certification in organic farming.",
     content2: "",
     content3: "",
-    article:
-      "https://www.linkedin.com/posts/yoshiaki-kitade_hackathon-winners-web3-activity-7048340759116214272-eJvo?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOa76QB7zljgX8NK4xVSZXi0Z49ETMeC-g",
-    github: "https://github.com/pranav2305/GreenTrust",
+    // article:
+    //   "https://www.linkedin.com/posts/yoshiaki-kitade_hackathon-winners-web3-activity-7048340759116214272-eJvo?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOa76QB7zljgX8NK4xVSZXi0Z49ETMeC-g",
+    // github: "https://github.com/pranav2305/GreenTrust",
   },
   {
     id: "a-4",
@@ -202,7 +202,7 @@ export const achievements = [
     content1: "1st Runner Up Overall by Lightspeed among 107 hackers",
     content2: "Top 3 projects using Replit",
     content3: "1st Runner Up by Amazon Web Services (AWS)",
-    article: "https://shorturl.at/fhjsT",
+    // article: "https://shorturl.at/fhjsT",
   },
   {
     id: "a-5",
@@ -211,7 +211,7 @@ export const achievements = [
     position: "Runners Up in the Base Track",
     content1: "Built an ambient virtual assistant before ChatGPT Pulse",
     content2: "Runners up in the Base Track with the Agentic AI theme for 2025",
-    project: "https://devfolio.co/projects/aeva-58d2",
+    // project: "https://devfolio.co/projects/aeva-58d2",
   },
   {
     id: "a-6",
@@ -220,7 +220,7 @@ export const achievements = [
     position: "Runner Up",
     content1: "Finished 2nd globally among PBA Alumni in a 6-week event",
     content2: "Contributed to several repositories in the Polkadot ecosystem in a Hacktoberfest-style event",
-    article: "https://www.morekudos.com/carnival",
+    // article: "https://www.morekudos.com/carnival",
   },
   {
     id: "a-7",
@@ -231,8 +231,8 @@ export const achievements = [
       "2nd position in the Polkadot Challenge I - Creative Marketing Strategies to Boost Polkadot Awareness & Adoption",
     content2: "",
     content3: "",
-    article: "https://x.com/polkadotsub0/status/1998425721916551355?s=46",
-    project: "https://taikai.network/OutofOrdinary/hackathons/web3mkthack/projects/cmi0skdbk0257vu09q3n8m44u/idea",
+    // article: "https://x.com/polkadotsub0/status/1998425721916551355?s=46",
+    // project: "https://taikai.network/OutofOrdinary/hackathons/web3mkthack/projects/cmi0skdbk0257vu09q3n8m44u/idea",
   },
   {
     id: "a-8",
@@ -243,8 +243,8 @@ export const achievements = [
       "1st Position in the Education, Finance & Tech track by AI Planet",
     content2: "",
     content3: "",
-    article:
-      "https://www.linkedin.com/posts/yoshiaki-kitade_happy-to-share-that-comicifyai-emerged-as-activity-7078790186435833856-88fh",
+    // article:
+    //   "https://www.linkedin.com/posts/yoshiaki-kitade_happy-to-share-that-comicifyai-emerged-as-activity-7078790186435833856-88fh",
   },
   {
     id: "a-9",
@@ -255,8 +255,8 @@ export const achievements = [
       "Rated the best portfolio website among 450+ participants across the globe.",
     content2: "",
     content3: "",
-    youtube: "https://www.youtube.com/watch?v=X2473En3h_o&t=5278s",
-    project: "https://yoshiakikitade.netlify.app/",
+    // youtube: "https://www.youtube.com/watch?v=X2473En3h_o&t=5278s",
+    // project: "https://yoshiakikitade.netlify.app/",
   },
   {
     id: "a-10",
@@ -267,7 +267,7 @@ export const achievements = [
     content2:
       "Developed a cross-platform mobile application to address the problem of social cohesion.",
     content3: "",
-    article: "https://shorturl.at/exEIQ",
+    // article: "https://shorturl.at/exEIQ",
   },
   {
     id: "a-11",
@@ -278,7 +278,7 @@ export const achievements = [
       "Honorable Mention among 655 participants across the globe in a 3 month-long online hackathon.",
     content2: "",
     content3: "",
-    project: "https://devpost.com/software/green-trust-xj2w6g",
+    // project: "https://devpost.com/software/green-trust-xj2w6g",
   },
   {
     id: "a-12",
@@ -289,7 +289,7 @@ export const achievements = [
       "Bounty winners among 430 projects in ETHGlobal's largest online hackathon.",
     content2: "",
     content3: "",
-    project: "https://devfolio.co/projects/green-trust-ed14",
+    // project: "https://devfolio.co/projects/green-trust-ed14",
   },
 ];
 
@@ -650,52 +650,52 @@ export const experiences = [
 
 // Add information about all the projects to be listed out in your portfolio
 export const projects = [
-  {
-    id: "project-1",
-    title: "Khoj",
-    github: "https://github.com/yoshiaki-kitade/Khoj",
-    link: "https://playkhoj.com/",
-    image: khoj,
-    content:
-      "Participate in AI-personalised treasure hunts where each clue is a physical location. Earn on-chain rewards and onboard a million users. Overall winning project at ETHIndia'24.",
-    stack: [
-      {
-        id: "proj1-icon-1",
-        icon: SiSolidity,
-        name: "Solidity",
-      },
-      {
-        id: "proj1-icon-2",
-        icon: SiTypescript,
-        name: "Typescript",
-      },
-      {
-        id: "proj1-icon-3",
-        icon: SiReact,
-        name: "React.js",
-      },
-      {
-        id: "proj1-icon-4",
-        icon: SiTailwindcss,
-        name: "TailwindCSS",
-      },
-      {
-        id: "proj1-icon-5",
-        icon: RiGeminiFill,
-        name: "Gemini",
-      },
-      {
-        id: "proj1-icon-6",
-        icon: SiThirdweb,
-        name: "Thirdweb",
-      },
-      {
-        id: "proj1-icon-7",
-        icon: SiIpfs,
-        name: "IPFS",
-      },
-    ],
-  },
+  // {
+  //   id: "project-1",
+  //   title: "Khoj",
+  //   github: "https://github.com/yoshiaki-kitade/Khoj",
+  //   link: "https://playkhoj.com/",
+  //   image: khoj,
+  //   content:
+  //     "Participate in AI-personalised treasure hunts where each clue is a physical location. Earn on-chain rewards and onboard a million users. Overall winning project at ETHIndia'24.",
+  //   stack: [
+  //     {
+  //       id: "proj1-icon-1",
+  //       icon: SiSolidity,
+  //       name: "Solidity",
+  //     },
+  //     {
+  //       id: "proj1-icon-2",
+  //       icon: SiTypescript,
+  //       name: "Typescript",
+  //     },
+  //     {
+  //       id: "proj1-icon-3",
+  //       icon: SiReact,
+  //       name: "React.js",
+  //     },
+  //     {
+  //       id: "proj1-icon-4",
+  //       icon: SiTailwindcss,
+  //       name: "TailwindCSS",
+  //     },
+  //     {
+  //       id: "proj1-icon-5",
+  //       icon: RiGeminiFill,
+  //       name: "Gemini",
+  //     },
+  //     {
+  //       id: "proj1-icon-6",
+  //       icon: SiThirdweb,
+  //       name: "Thirdweb",
+  //     },
+  //     {
+  //       id: "proj1-icon-7",
+  //       icon: SiIpfs,
+  //       name: "IPFS",
+  //     },
+  //   ],
+  // },
   {
     id: "project-2",
     title: "Echo",
@@ -1227,7 +1227,7 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: AiFillLinkedin,
-    link: "https://www.linkedin.com/in/yoshiaki-kitade",
+    link: " https://www.linkedin.com/in/yoshiaki-kitade-37677840b",
   },
   {
     id: "social-media-2",
@@ -1237,7 +1237,7 @@ export const socialMedia = [
   {
     id: "social-media-3",
     icon: AiFillMail,
-    link: "mailto:work.yoshiakikitade@gmail.com",
+    link: "yoshiakikitade@gmail.com",
   },
   {
     id: "social-media-4",

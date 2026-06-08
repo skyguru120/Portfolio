@@ -42,7 +42,7 @@ const Project = (props) => {
       </p>
 
       <div className="flex mt-4 -mx-2">
-        {props.github ? (
+        {/* {props.github ? (
           <a href={props.github} target="_blank">
             <AiFillGithub
               size="2rem"
@@ -51,7 +51,7 @@ const Project = (props) => {
           </a>
         ) : (
           ""
-        )}
+        )} */}
         {props.link ? (
           <a href={props.link} target="_blank">
             <BsLink45Deg
