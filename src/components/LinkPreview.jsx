@@ -69,20 +69,15 @@ export const LinkPreview = ({ children, url, className }) => {
       const data = await response.json();
 
       if (data.status === "success") {
-        // Set metadata with API response or fallbacks
+        const candidate =
+          data.data.image?.url || data.data.logo?.url || getFallbackImage(url);
+
         setMetadata({
-          // Use image URL from API, fallback to logo, or use domain-specific fallback
-          image:
-            data.data.image?.url ||
-            data.data.logo?.url ||
-            getFallbackImage(url),
-          // Use title from API or fallback to domain name
+          image: resolvePreviewImage(candidate, url),
           title: data.data.title || getDomain(url),
-          // Use description from API or default text
           description: data.data.description || "Click to visit",
         });
       } else {
-        // If API request fails, use fallback values
         setMetadata({
           image: getFallbackImage(url),
           title: getDomain(url),
@@ -115,6 +110,17 @@ export const LinkPreview = ({ children, url, className }) => {
     } catch {
       return url;
     }
+  };
+
+  const isUnsupportedPreviewImage = (imageUrl) => {
+    if (!imageUrl || typeof imageUrl !== "string") return true;
+    if (/^data:image\/svg/i.test(imageUrl)) return true;
+    return /\.svg(\?|#|$)/i.test(imageUrl);
+  };
+
+  const resolvePreviewImage = (imageUrl, pageUrl) => {
+    if (!isUnsupportedPreviewImage(imageUrl)) return imageUrl;
+    return getFallbackImage(pageUrl);
   };
 
   const getFallbackImage = (url) => {
@@ -185,9 +191,13 @@ export const LinkPreview = ({ children, url, className }) => {
                     transition={{ duration: 0.3 }}
                   >
                     <img
-                      src={metadata?.image || getFallbackImage(url)}
+                      src={resolvePreviewImage(metadata?.image, url) || getFallbackImage(url)}
                       alt="Preview"
                       className="w-full h-full object-cover"
+                      onError={(event) => {
+                        event.currentTarget.onerror = null;
+                        event.currentTarget.src = getFallbackImage(url);
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
                   </motion.div>

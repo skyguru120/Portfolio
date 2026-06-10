@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { callToAction } from "../constants";
+import { normalizeExternalUrl } from "../lib/helperFunctions";
 import { useLanguage } from "../context/LanguageContext";
 
 const LetsConnect = ({ className = "" }) => {
@@ -9,7 +10,7 @@ const LetsConnect = ({ className = "" }) => {
     <motion.button
       type="button"
       className={`planet-connect group ${className}`}
-      onClick={() => window.open(callToAction)}
+      onClick={() => window.open(normalizeExternalUrl(callToAction), "_blank", "noopener,noreferrer")}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
       animate={{ y: [0, -10, 0] }}
