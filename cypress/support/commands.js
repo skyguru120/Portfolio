@@ -8,7 +8,11 @@
  * Use this when the dev server is already running (e.g. npm run dev in another terminal).
  */
 Cypress.Commands.add('waitForApp', () => {
-  cy.visit('/');
+  cy.visit('/', {
+    onBeforeLoad(win) {
+      win.localStorage.setItem('portfolio-locale', 'en');
+    },
+  });
   cy.get('nav', { timeout: 15000 }).should('be.visible');
 });
 

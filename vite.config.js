@@ -29,6 +29,10 @@ export default defineConfig(({ mode }) => {
       host: '127.0.0.1',
       port: 5173,
     },
+    preview: {
+      host: '127.0.0.1',
+      port: 4173,
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

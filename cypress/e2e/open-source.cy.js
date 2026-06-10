@@ -1,6 +1,10 @@
 describe('Open Source section', () => {
+  const contributionsEndpoint = '**/api/fetchContributions';
+
   beforeEach(() => {
-    cy.intercept('POST', '**/.netlify/functions/fetchContributions', { fixture: 'contributions.json' }).as('fetchContributions');
+    cy.intercept('POST', contributionsEndpoint, { fixture: 'contributions.json' }).as(
+      'fetchContributions'
+    );
     cy.waitForApp();
     cy.get('#openSource', { timeout: 8000 }).scrollIntoView();
     cy.wait('@fetchContributions', { timeout: 15000 });
@@ -29,9 +33,14 @@ describe('Open Source section', () => {
   });
 
   it('error state shows error message when API fails', () => {
-    cy.intercept('POST', '**/.netlify/functions/fetchContributions', { statusCode: 500, body: { error: 'Failed' } }).as('fetchFail');
-    cy.intercept('POST', '**/api/contributions', { statusCode: 500, body: { error: 'Failed' } }).as('fetchFailApi');
-    cy.visit('/');
+    cy.intercept('POST', contributionsEndpoint, { statusCode: 500, body: { error: 'Failed' } }).as(
+      'fetchFail'
+    );
+    cy.visit('/', {
+      onBeforeLoad(win) {
+        win.localStorage.setItem('portfolio-locale', 'en');
+      },
+    });
     cy.get('nav', { timeout: 15000 }).should('be.visible');
     cy.get('#openSource', { timeout: 8000 }).scrollIntoView();
     cy.get('#openSource').contains('Something went wrong', { timeout: 8000 }).should('be.visible');

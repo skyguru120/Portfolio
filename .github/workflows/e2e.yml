@@ -7,17 +7,9 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - labeled
 
 jobs:
   cypress-e2e:
-    # Run on any push to main, or when the `run-tests` label is added to a PR targeting main
-    if: >
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' &&
-       github.event.action == 'labeled' &&
-       github.event.label.name == 'run-tests')
     runs-on: ubuntu-latest
 
     steps:
@@ -31,20 +23,20 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build app
         run: npm run build
 
       - name: Start Vite preview server
         run: |
-          npm run preview -- --host 0.0.0.0 --port 4173 &
+          npm run preview -- --host 127.0.0.1 --port 4173 &
           npx wait-on http://127.0.0.1:4173
 
       - name: Run Cypress E2E
         env:
           CYPRESS_BASE_URL: http://127.0.0.1:4173
-        run: npx cypress run
+        run: npm run cypress:run
 
       - name: Upload Cypress screenshots
         if: failure()
@@ -61,4 +53,3 @@ jobs:
           name: cypress-videos
           path: cypress/videos
           if-no-files-found: ignore
-

@@ -5,7 +5,7 @@ import path from 'path';
 // Run the dev server (npm run dev) before cypress:run. If Vite uses a different port, set CYPRESS_BASE_URL (e.g. http://localhost:5174).
 export default defineConfig({
   e2e: {
-    baseUrl: process.env.CYPRESS_BASE_URL || 'https://localhost:5173',
+    baseUrl: process.env.CYPRESS_BASE_URL || 'http://127.0.0.1:5173',
     viewportWidth: 1280,
     viewportHeight: 720,
     setupNodeEvents(on) {
