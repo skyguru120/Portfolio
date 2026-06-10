@@ -23,6 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Archives (too large for git)
+*.rar
+*.zip
+*.7z
+
 # Local Netlify folder
 .netlify
 
