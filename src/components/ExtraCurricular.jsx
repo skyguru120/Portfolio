@@ -3,6 +3,7 @@ import styles from "../style";
 import { extraCurricular } from "../constants";
 import { BsLink45Deg } from "react-icons/bs";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 const Content = ({ text, link }) => {
   return (
@@ -62,19 +63,21 @@ const ExtraCurricularCard = (props) => {
 };
 
 const ExtraCurricular = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="extraCurricular">
       <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        {/* Extra Curricular */}
+        {t.sections.extraCurricular}
       </h1>
 
       <div className={`${styles.flexCenter} flex-col relative mb-4 mt-8`}>
         <div className="absolute z-[0] w-[60%] h-[60%] -right-[50%] rounded-full blue__gradient bottom-40" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 md:mt-16 md:grid-cols-3">
-          {/* {extraCurricular.map((card) => (
+          {extraCurricular.map((card) => (
             <ExtraCurricularCard key={card.id} index={card.id} {...card} />
-          ))} */}
+          ))}
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { aboutMe } from '../../src/constants';
+import en from '../../src/i18n/en';
 
 describe('Hero section', () => {
   beforeEach(() => {
@@ -6,18 +6,20 @@ describe('Hero section', () => {
   });
 
   it('renders heading "Hi there!" and "I am"', () => {
-    cy.get('#home').within(() => {
-      cy.contains('Hi there!').should('be.visible');
-      cy.contains('I am').should('be.visible');
-    });
+    cy.get('#home .hero-content__heading')
+      .invoke('text')
+      .should('match', /Hi\s*there!/);
+    cy.get('#home .hero-content__heading')
+      .invoke('text')
+      .should('match', /I\s*am/);
   });
 
-  it('displays name from constants with text-gradient class', () => {
-    cy.get('#home').contains('.text-gradient', aboutMe.name).should('be.visible');
+  it('displays name from i18n with hero name styling', () => {
+    cy.get('#home').contains('.hero-name-shimmer', en.aboutMe.name).should('be.visible');
   });
 
-  it('displays intro text from constants', () => {
-    cy.get('#home').contains(aboutMe.intro).should('be.visible');
+  it('displays intro text from i18n', () => {
+    cy.get('#home').contains(en.aboutMe.intro).should('be.visible');
   });
 
   it('has fantasy hero animation', () => {

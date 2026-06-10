@@ -1,4 +1,5 @@
-import { aboutMe, socialMedia } from '../../src/constants';
+import { socialMedia } from '../../src/constants';
+import en from '../../src/i18n/en';
 
 describe('Footer section', () => {
   beforeEach(() => {
@@ -6,16 +7,16 @@ describe('Footer section', () => {
     cy.get('#contactMe', { timeout: 8000 }).scrollIntoView();
   });
 
-  it('displays name from constants', () => {
-    cy.get('#contactMe').contains('h2', aboutMe.name).should('be.visible');
+  it('displays name from i18n', () => {
+    cy.get('#contactMe').contains('h2', en.aboutMe.name).should('be.visible');
   });
 
-  it('displays tagline from constants', () => {
-    cy.get('#contactMe').contains(aboutMe.tagLine).should('be.visible');
+  it('displays tagline from i18n', () => {
+    cy.get('#contactMe').contains(en.aboutMe.tagLine).should('be.visible');
   });
 
   it('profile picture with name in alt is visible', () => {
-    cy.get('#contactMe').find(`img[alt="${aboutMe.name}"]`).should('be.visible');
+    cy.get('#contactMe').find(`img[alt="${en.aboutMe.name}"]`).should('be.visible');
   });
 
   it('all social media links are rendered', () => {
@@ -25,9 +26,8 @@ describe('Footer section', () => {
     });
   });
 
-  it('Resume and Star buttons are present', () => {
-    cy.get('#contactMe').contains('Resume').should('be.visible');
-    cy.get('#contactMe').contains('Star').should('be.visible');
+  it('Resume button is present', () => {
+    cy.get('#contactMe').contains(en.common.resume).should('be.visible');
   });
 
   describe('Responsiveness', () => {

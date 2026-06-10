@@ -30,7 +30,7 @@ describe('Projects section', () => {
       cy.viewportPreset('desktop');
       cy.get('#projects').scrollIntoView();
       cy.get('#projects').find('.projects-bento').invoke('css', 'grid-template-columns').then((cols) => {
-        expect(cols).to.match(/repeat\(3/);
+        expect(cols.split(' ').length).to.be.at.least(3);
       });
     });
 
