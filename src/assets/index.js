@@ -52,6 +52,7 @@ import nextgenSystems from "./nextgen_systems.png";
 import monoya from "./monoya.png";
 import gunosy from "./gunosy.png";
 import nssolutions from "./nssolutions.png";
+import callnest from "./callnest.png";
 
 export {
   menu,
@@ -108,4 +109,5 @@ export {
   monoya,
   gunosy,
   nssolutions,
+  callnest,
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import { socialMedia } from "../constants";
-import { profilePic } from "../assets";
+import { callnest } from "../assets";
 import { layout } from "../style";
 import { resumeLink } from "../constants";
 import { AiFillFilePdf } from "react-icons/ai";
@@ -52,9 +52,9 @@ const Footer = () => {
 
         <div className="md:ml-auto mt-10 md:mt-0">
           <img
-            src={profilePic}
-            alt={t.aboutMe.name}
-            className="w-[200px] h-[200px] border-2 border-teal-200 relative z-[5] rounded-full"
+            src={callnest}
+            alt="Callnest"
+            className="w-[200px] h-auto relative z-[5] object-contain"
           />
         </div>
       </div>

@@ -15,8 +15,8 @@ describe('Footer section', () => {
     cy.get('#contactMe').contains(en.aboutMe.tagLine).should('be.visible');
   });
 
-  it('profile picture with name in alt is visible', () => {
-    cy.get('#contactMe').find(`img[alt="${en.aboutMe.name}"]`).should('be.visible');
+  it('Callnest logo is visible', () => {
+    cy.get('#contactMe').find('img[alt="Callnest"]').should('be.visible');
   });
 
   it('all social media links are rendered', () => {
@@ -31,7 +31,7 @@ describe('Footer section', () => {
   });
 
   describe('Responsiveness', () => {
-    it('desktop: profile pic and info side by side', () => {
+    it('desktop: logo and info side by side', () => {
       cy.viewportPreset('desktop');
       cy.get('#contactMe').scrollIntoView();
       cy.get('#contactMe').find('[class*="flex-col-reverse"]').first().invoke('css', 'flex-direction').then((dir) => {
